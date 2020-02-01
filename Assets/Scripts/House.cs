@@ -7,13 +7,14 @@ public class House : MonoBehaviour
 {
 	public EHouseState HouseState;
 	public EHouseType HouseType;
+	public int coins;
+	public int requiredWorkers;
+
 	public bool BuildIsCancelled { get; }
 
 	private SpriteRenderer render;
 	private int houseParamIndex;
 
-	private int coins;
-	private int requiredWorkers;
 	private float buildProgress;
 
 	private GameObject owner;
