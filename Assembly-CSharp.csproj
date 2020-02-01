@@ -74,6 +74,7 @@
     <Compile Include="Assets\IndieMarc\PlatformerDemo\Scripts\TheAudio.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\AutoOrderLayer.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\AutoOrderLayerChild.cs" />
+    <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\Building.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CarryItem.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\Character.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterAnim.cs" />
