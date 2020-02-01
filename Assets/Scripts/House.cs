@@ -8,6 +8,7 @@ public class House : MonoBehaviour
 	public bool BuildIsCancelled { get; }
 
 	private SpriteRenderer render;
+	private int spriteCollectionIndex;
 
 	private int coins;
 	private float buildProgress;
@@ -18,6 +19,7 @@ public class House : MonoBehaviour
 	{
 		HouseState = EHouseState.Destroyed;
 		BuildContainer.Instance.AddNewHouse(this);
+		spriteCollectionIndex = BuildContainer.Instance.GetRandomHouseSpriteIndex();
 		ChangeSprite();
 		owner = null;
 		buildProgress = 0f;
@@ -54,9 +56,9 @@ public class House : MonoBehaviour
 	private void ChangeSprite()
 	{
 		if (HouseState == EHouseState.Destroyed)
-			render.sprite = BuildContainer.Instance.DestroyHouse;
+			render.sprite = BuildContainer.Instance.GetHouseSpriteByIndex(spriteCollectionIndex).DestroyedSprite;
 		if (HouseState == EHouseState.Builded)
-			render.sprite = BuildContainer.Instance.BuildedHouse;
+			render.sprite = BuildContainer.Instance.GetHouseSpriteByIndex(spriteCollectionIndex).BuildedSprite;
 
 	}
 
