@@ -27,6 +27,7 @@ namespace IndieMarc.TopDown
 
             //Move
             rigid.velocity = move;
+            state = move != Vector2.zero ? State.moving : state != State.working ? State.idle : State.working;
 
             if (employeesCount != employeesList.Count)
                 if (employeesCount > employeesList.Count) EmployeeAdd(Vector3.zero);
