@@ -17,7 +17,7 @@ namespace IndieMarc.TopDown
         public Vector3 target_offset;
         public float camera_speed = 5f;
         
-        private PlayerCharacter target_character;
+        private Character target_character;
         private Camera cam;
         private Vector3 cur_pos;
         private GameObject lock_target = null;

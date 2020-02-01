@@ -19,9 +19,9 @@ namespace IndieMarc.TopDown
         public float carry_angle_deg = 0f;
         public bool reset_on_death;
         
-        [HideInInspector]
+        //[HideInInspector]
         public UnityAction<GameObject> OnTake;
-        [HideInInspector]
+        //[HideInInspector]
         public UnityAction<GameObject> OnDrop;
 
         private CharacterHoldItem bearer;
