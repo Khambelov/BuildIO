@@ -63,8 +63,15 @@ namespace IndieMarc.TopDown
         {
             if (collision.gameObject.GetComponent<House>() != null && controls.IsStay)
             {
-                collision.gameObject.GetComponent<House>().StartBuilding(10f, employeesCount, gameObject);
+                collision.gameObject.GetComponent<House>().StartBuilding(GetBuildSpeed(collision.gameObject.GetComponent<House>().RequiredWorkers), employeesCount, gameObject);
             }
+        }
+
+        private float GetBuildSpeed(int requiredWorkers)
+        {
+            float workers = (float)requiredWorkers;
+
+            return ((workers / 7f) / workers) * (employeesCount > workers ? workers : employeesCount);
         }
 
         //Handle render and controls
