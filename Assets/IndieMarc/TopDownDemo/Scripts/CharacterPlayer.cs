@@ -13,6 +13,7 @@ namespace IndieMarc.TopDown
         public int employeesCount;
         public List<CharacterEmployee> employeesList;
         public GameObject employePrefab;
+        public PlayerControls controls;
 
         //Handle physics
         void FixedUpdate()
@@ -53,6 +54,17 @@ namespace IndieMarc.TopDown
         {
             Destroy(employeesList.Last().gameObject);
             employeesList.Remove(employeesList.Last());
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.gameObject.GetComponent<House>() != null && controls.IsStay)
+            {
+                var speed = 30f;
+                var worker = 1;
+
+                collision.gameObject.GetComponent<House>().StartBuilding(speed, worker, gameObject);
+            }
         }
 
         //Handle render and controls

@@ -19,8 +19,8 @@ public class House : MonoBehaviour
 
 	private GameObject owner;
 
-	public static Color white;
-	public static Color invis = new Color(1,1,1,0.5f);
+	public static Color white = Color.white;
+	public static Color invis = new Color(1, 1, 1, 0.5f);
 
 	void Start()
 	{
@@ -46,20 +46,22 @@ public class House : MonoBehaviour
 		ChangeSprite();
 	}
 
-	// private void OnTriggerEnter2D(Collider2D other) {
-	// 	Debug.Log(other.gameObject);
-	// 	if(other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
-	// 	{
-	// 		render.color = invis;
-	// 	}
-	// }
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		Debug.Log(other.gameObject);
+		if (other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
+		{
+			render.color = invis;
+		}
+	}
 
-	// private void OnTriggerExit2D(Collider2D other) {
-	// 		if(other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
-	// 	{
-	// 		render.color = white;
-	// 	}
-	// }
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
+		{
+			render.color = white;
+		}
+	}
 
 	public void StartBuilding(float buildSpeed, int countWorkers, GameObject team)
 	{
@@ -100,6 +102,7 @@ public class House : MonoBehaviour
 	private IEnumerator BuildingHouse(float buildSpeed)
 	{
 		var smoke = Instantiate(BuildContainer.Instance.BuildingSmoke, Vector3.zero, Quaternion.identity, transform);
+		smoke.transform.localPosition = Vector3.zero;
 
 		while (buildProgress < 100f)
 		{
