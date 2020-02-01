@@ -88,9 +88,11 @@
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\TheAudio.cs" />
     <Compile Include="Assets\Scripts\BuildContainer.cs" />
     <Compile Include="Assets\Scripts\EHouseState.cs" />
+    <Compile Include="Assets\Scripts\EHouseType.cs" />
     <Compile Include="Assets\Scripts\FirstScript.cs" />
     <Compile Include="Assets\Scripts\House.cs" />
-    <Compile Include="Assets\Scripts\HouseSpriteCollection.cs" />
+    <Compile Include="Assets\Scripts\HouseParams.cs" />
+    <Compile Include="Assets\TestScript.cs" />
     <None Include="Assets\IndieMarc\TopDownDemo\Materials\Sprite3D-unlit.shader" />
     <None Include="Assets\IndieMarc\TopDownDemo\Materials\Sprite3D-diffuse.shader" />
     <Reference Include="Unity.Timeline.Editor">

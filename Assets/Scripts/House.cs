@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class House : MonoBehaviour
 {
 	public EHouseState HouseState;
+	public EHouseType HouseType;
 	public bool BuildIsCancelled { get; }
 
 	private SpriteRenderer render;
-	private int spriteCollectionIndex;
+	private int houseParamIndex;
 
 	private int coins;
+	private int requiredWorkers;
 	private float buildProgress;
 
 	private GameObject owner;
@@ -19,16 +22,28 @@ public class House : MonoBehaviour
 	{
 		HouseState = EHouseState.Destroyed;
 		BuildContainer.Instance.AddNewHouse(this);
-		spriteCollectionIndex = BuildContainer.Instance.GetRandomHouseSpriteIndex();
-		ChangeSprite();
-		owner = null;
-		buildProgress = 0f;
-		coins = 1000;
+		houseParamIndex = BuildContainer.Instance.GetRandomHouseIndex();
+
+		SetStartParams();
 	}
 
-	public void StartBuilding(float buildSpeed, GameObject team)
+	private void SetStartParams()
 	{
-		if (HouseState == EHouseState.Destroyed)
+		var parameters = BuildContainer.Instance.GetHouseByIndex(houseParamIndex);
+
+		HouseType = parameters.HouseType;
+		coins = parameters.RewardCoins;
+		requiredWorkers = parameters.RequiredWorkers;
+
+		owner = null;
+		buildProgress = 0f;
+
+		ChangeSprite();
+	}
+
+	public void StartBuilding(float buildSpeed, int countWorkers, GameObject team)
+	{
+		if (HouseState == EHouseState.Destroyed && countWorkers >= requiredWorkers)
 		{
 			owner = team;
 
@@ -56,9 +71,9 @@ public class House : MonoBehaviour
 	private void ChangeSprite()
 	{
 		if (HouseState == EHouseState.Destroyed)
-			render.sprite = BuildContainer.Instance.GetHouseSpriteByIndex(spriteCollectionIndex).DestroyedSprite;
+			render.sprite = BuildContainer.Instance.GetHouseByIndex(houseParamIndex).DestroyedSprite;
 		if (HouseState == EHouseState.Builded)
-			render.sprite = BuildContainer.Instance.GetHouseSpriteByIndex(spriteCollectionIndex).BuildedSprite;
+			render.sprite = BuildContainer.Instance.GetHouseByIndex(houseParamIndex).BuildedSprite;
 
 	}
 

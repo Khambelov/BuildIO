@@ -11,7 +11,7 @@ public class BuildContainer : MonoBehaviour
 	public GameObject BuildingSmoke;
 
 	[SerializeField]
-	private HouseSpriteCollection[] housesSpriteCollection;
+	private HouseParams[] housesCollection;
 
 	private List<House> houses;
 
@@ -22,19 +22,19 @@ public class BuildContainer : MonoBehaviour
 		houses = new List<House>();
 	}
 
-	public int GetRandomHouseSpriteIndex()
+	public int GetRandomHouseIndex()
 	{
-		return Random.Range(0, housesSpriteCollection.Length);
+		return Random.Range(0, housesCollection.Length);
 	}
 
-	public HouseSpriteCollection GetRandomHouseSprite()
+	public HouseParams GetRandomHouse()
 	{
-		return housesSpriteCollection[Random.Range(0, housesSpriteCollection.Length)];
+		return housesCollection[Random.Range(0, housesCollection.Length)];
 	}
 
-	public HouseSpriteCollection GetHouseSpriteByIndex(int index)
+	public HouseParams GetHouseByIndex(int index)
 	{
-		return housesSpriteCollection[index];
+		return housesCollection[index];
 	}
 
 	public void AddNewHouse(House house)
