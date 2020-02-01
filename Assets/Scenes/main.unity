@@ -5674,7 +5674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa67ccf0af33524fa1607c6dd6b64a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabHuman: {fileID: 4297287275525075296, guid: df0f193295ea32a43ae2a21a632b9703,
+  prefabHuman: {fileID: 532543861147640738, guid: 078e64324ad964a4cad6e739854478a1,
     type: 3}
   prefabHouse: {fileID: 0}
   deactivatedPool: {fileID: 990619479}
@@ -9154,6 +9154,11 @@ PrefabInstance:
       value: CharacterTopDown
       objectReference: {fileID: 0}
     - target: {fileID: 4297287275525075296, guid: df0f193295ea32a43ae2a21a632b9703,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042882263927796484, guid: df0f193295ea32a43ae2a21a632b9703,
         type: 3}
       propertyPath: m_Enabled
       value: 1

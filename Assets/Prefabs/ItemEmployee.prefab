@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 114026816058870002}
   - component: {fileID: 114755808840926446}
   - component: {fileID: 114747626060304776}
+  - component: {fileID: 532543861147640738}
   m_Layer: 0
   m_Name: ItemEmployee
   m_TagString: Untagged
@@ -182,3 +183,15 @@ MonoBehaviour:
   sort_refresh_rate: 0.1
   auto_rotate: 1
   rotate_offset: 0.2
+--- !u!114 &532543861147640738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200187715432478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f172f44960bd7249a62ad20f1cf1ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -252,14 +252,15 @@ namespace IndieMarc.TopDown
 
         public void Destroy()
         {
-            if (bearer && bearer.GetComponent<CharacterHoldItem>())
-            {
-                bearer.GetComponent<CharacterHoldItem>().DropItem();
-            }
-            destroyed = true;
-            collide.enabled = false;
-            sprite_render.enabled = false;
-            destroy_timer = 0f;
+            PoolingManager.Instance.release(GetComponent<Human>());
+            // if (bearer && bearer.GetComponent<CharacterHoldItem>())
+            // {
+            //     bearer.GetComponent<CharacterHoldItem>().DropItem();
+            // }
+            // destroyed = true;
+            // collide.enabled = false;
+            // sprite_render.enabled = false;
+            // destroy_timer = 0f;
         }
 
         public void SetStartingPos(Vector3 start_pos)
