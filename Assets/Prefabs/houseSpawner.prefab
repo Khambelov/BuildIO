@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3080580404743097656}
   - component: {fileID: 6347682078634068754}
   - component: {fileID: 3326101052905374083}
+  - component: {fileID: 3346623150024295922}
   m_Layer: 0
   m_Name: houseSpawner
   m_TagString: Untagged
@@ -126,3 +127,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.492561, y: 10.144729}
   m_EdgeRadius: 0
+--- !u!50 &3346623150024295922
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897520299460578668}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
