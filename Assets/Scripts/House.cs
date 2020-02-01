@@ -19,8 +19,12 @@ public class House : MonoBehaviour
 
 	private GameObject owner;
 
+	public static Color white;
+	public static Color invis = new Color(1,1,1,1/2);
+
 	void Start()
 	{
+		render = GetComponent<SpriteRenderer>();
 		HouseState = EHouseState.Destroyed;
 		BuildContainer.Instance.AddNewHouse(this);
 		houseParamIndex = BuildContainer.Instance.GetRandomHouseIndex();
@@ -40,6 +44,20 @@ public class House : MonoBehaviour
 		buildProgress = 0f;
 
 		ChangeSprite();
+	}
+
+	private void OnTriggerEnter2D(Collider2D other) {
+		if(other.gameObject.GetComponent<CharacterController>() != null)
+		{
+			render.color = invis;
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D other) {
+			if(other.gameObject.GetComponent<CharacterController>() != null)
+		{
+			render.color = white;
+		}
 	}
 
 	public void StartBuilding(float buildSpeed, int countWorkers, GameObject team)
