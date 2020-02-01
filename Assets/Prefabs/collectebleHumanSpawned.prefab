@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 114359742649268298}
   - component: {fileID: 114902388524385934}
   m_Layer: 0
-  m_Name: CharacterEmployeeTopDown
+  m_Name: collectebleHumanSpawned
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,10 +259,11 @@ MonoBehaviour:
   player_id: 0
   max_hp: 100
   invulnerable: 0
-  move_accel: 5
+  move_accel: 100
   move_deccel: 10
-  move_max: 2
+  move_max: 10
   owner: {fileID: 0}
+  movePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114359742649268298
 MonoBehaviour:
   m_ObjectHideFlags: 0

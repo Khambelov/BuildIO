@@ -9578,12 +9578,26 @@ MonoBehaviour:
   BuildingSmoke: {fileID: 11858480257825139, guid: 0867a61c43a102543bab6c107c431982,
     type: 3}
   housesCollection:
-  - HouseType: 1
+  - HouseType: 0
     RewardCoins: 1000
     RequiredWorkers: 10
-    DestroyedSprite: {fileID: -1966615334647356399, guid: b396d1d10efd0434891be59d45eeadca,
+    DestroyedSprite: {fileID: 8757396837692209314, guid: 414b7015616801248be3cdbc56f35915,
       type: 3}
-    BuildedSprite: {fileID: 1580740408080562092, guid: b396d1d10efd0434891be59d45eeadca,
+    BuildedSprite: {fileID: 3198413410729557013, guid: 414b7015616801248be3cdbc56f35915,
+      type: 3}
+  - HouseType: 2
+    RewardCoins: 1000
+    RequiredWorkers: 10
+    DestroyedSprite: {fileID: -1621681913746983810, guid: bda60645ac1ec9347b744f59bd68b0a8,
+      type: 3}
+    BuildedSprite: {fileID: -5072557114322916609, guid: bda60645ac1ec9347b744f59bd68b0a8,
+      type: 3}
+  - HouseType: 3
+    RewardCoins: 1000
+    RequiredWorkers: 10
+    DestroyedSprite: {fileID: 6161436619894888230, guid: 8512a002943bb814886784fbcbf2d8d1,
+      type: 3}
+    BuildedSprite: {fileID: 7846822367210436989, guid: 8512a002943bb814886784fbcbf2d8d1,
       type: 3}
 --- !u!4 &1277361903
 Transform:
@@ -16633,10 +16647,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5648973738032884999, guid: d37a232f90568ce4f9550bd021da6f61,
+        type: 3}
+      propertyPath: move_accel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648973738032884999, guid: d37a232f90568ce4f9550bd021da6f61,
+        type: 3}
+      propertyPath: move_max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648973738032884999, guid: d37a232f90568ce4f9550bd021da6f61,
+        type: 3}
+      propertyPath: move_deccel
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5648973738032885001, guid: d37a232f90568ce4f9550bd021da6f61,
         type: 3}
       propertyPath: m_Name
       value: CharacterTopDown
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5648973738032885003, guid: d37a232f90568ce4f9550bd021da6f61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d37a232f90568ce4f9550bd021da6f61, type: 3}
