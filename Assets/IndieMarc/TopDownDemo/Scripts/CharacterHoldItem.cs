@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace IndieMarc.TopDown
 {
-    [RequireComponent(typeof(PlayerCharacter))]
+    [RequireComponent(typeof(Character))]
     public class CharacterHoldItem : MonoBehaviour
     {
         public Transform hand;
 
-        private PlayerCharacter character;
+        private Character character;
 
         private CarryItem held_item = null;
         private float take_item_timer = 0f;
 
         void Awake()
         {
-            character = GetComponent<PlayerCharacter>();
+            character = GetComponent<Character>();
         }
 
         private void Start()
@@ -41,6 +41,13 @@ namespace IndieMarc.TopDown
 
         public void TakeItem(CarryItem item) {
 
+            if (item.item_type == "Employee")
+            {
+                ((CharacterPlayer)character).EmployeeAdd(item.gameObject.transform.position);
+                item.Destroy();
+                return;
+            }
+
             if (item == held_item || take_item_timer < 0f)
                 return;
 
@@ -61,7 +68,7 @@ namespace IndieMarc.TopDown
             }
         }
 
-        public PlayerCharacter GetCharacter()
+        public Character GetCharacter()
         {
             return character;
         }

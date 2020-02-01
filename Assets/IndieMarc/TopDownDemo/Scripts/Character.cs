@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace IndieMarc.TopDown
 {
-    public class PlayerCharacter : MonoBehaviour
+    public class Character : MonoBehaviour
     {
         public int player_id;
 
@@ -28,21 +28,21 @@ namespace IndieMarc.TopDown
         public UnityAction onDeath;
         public UnityAction onHit;
 
-        private Rigidbody2D rigid;
-        private Animator animator;
-        private AutoOrderLayer auto_order;
-        private ContactFilter2D contact_filter;
+        protected Rigidbody2D rigid;
+        protected Animator animator;
+        protected AutoOrderLayer auto_order;
+        protected ContactFilter2D contact_filter;
 
-        private float hp;
-        private bool is_dead = false;
-        private Vector2 move;
-        private Vector2 move_input;
-        private Vector2 lookat = Vector2.zero;
-        private float side = 1f;
-        private bool disable_controls = false;
-        private float hit_timer = 0f;
+        protected float hp;
+        protected bool is_dead = false;
+        protected Vector2 move;
+        protected Vector2 move_input;
+        protected Vector2 lookat = Vector2.zero;
+        protected float side = 1f;
+        protected bool disable_controls = false;
+        protected float hit_timer = 0f;
 
-        private static Dictionary<int, PlayerCharacter> character_list = new Dictionary<int, PlayerCharacter>();
+        private static Dictionary<int, Character> character_list = new Dictionary<int, Character>();
 
         void Awake()
         {
@@ -56,50 +56,6 @@ namespace IndieMarc.TopDown
         void OnDestroy()
         {
             character_list.Remove(player_id);
-        }
-
-        void Start()
-        {
-
-        }
-
-        //Handle physics
-        void FixedUpdate()
-        {
-            //Movement velocity
-            float desiredSpeedX = Mathf.Abs(move_input.x) > 0.1f ? move_input.x * move_max : 0f;
-            float accelerationX = Mathf.Abs(move_input.x) > 0.1f ? move_accel : move_deccel;
-            move.x = Mathf.MoveTowards(move.x, desiredSpeedX, accelerationX * Time.fixedDeltaTime);
-            float desiredSpeedY = Mathf.Abs(move_input.y) > 0.1f ? move_input.y * move_max : 0f;
-            float accelerationY = Mathf.Abs(move_input.y) > 0.1f ? move_accel : move_deccel;
-            move.y = Mathf.MoveTowards(move.y, desiredSpeedY, accelerationY * Time.fixedDeltaTime);
-
-            //Move
-            rigid.velocity = move;
-            
-        }
-
-        //Handle render and controls
-        void Update()
-        {
-            hit_timer += Time.deltaTime;
-            move_input = Vector2.zero;
-
-            //Controls
-            if (!disable_controls)
-            {
-                //Controls
-                PlayerControls controls = PlayerControls.Get(player_id);
-                move_input = controls.GetMove();
-                
-            }
-
-            //Update lookat side
-            if (move.magnitude > 0.1f)
-                lookat = move.normalized;
-            if (Mathf.Abs(lookat.x) > 0.02)
-                side = Mathf.Sign(lookat.x);
-            
         }
 
         public void HealDamage(float heal)
@@ -184,11 +140,11 @@ namespace IndieMarc.TopDown
         public void DisableControls() { disable_controls = true; }
         public void EnableControls() { disable_controls = false; }
         
-        public static PlayerCharacter GetNearest(Vector3 pos, float range = 999f, bool alive_only=true)
+        public static Character GetNearest(Vector3 pos, float range = 999f, bool alive_only=true)
         {
-            PlayerCharacter nearest = null;
+            Character nearest = null;
             float min_dist = range;
-            foreach (PlayerCharacter character in character_list.Values)
+            foreach (Character character in character_list.Values)
             {
                 if (!alive_only || !character.IsDead())
                 {
@@ -203,9 +159,9 @@ namespace IndieMarc.TopDown
             return nearest;
         }
 
-        public static PlayerCharacter Get(int player_id)
+        public static Character Get(int player_id)
         {
-            foreach (PlayerCharacter character in character_list.Values)
+            foreach (Character character in character_list.Values)
             {
                 if (character.player_id == player_id)
                 {
@@ -215,9 +171,9 @@ namespace IndieMarc.TopDown
             return null;
         }
 
-        public static PlayerCharacter[] GetAll()
+        public static Character[] GetAll()
         {
-            PlayerCharacter[] list = new PlayerCharacter[character_list.Count];
+            Character[] list = new Character[character_list.Count];
             character_list.Values.CopyTo(list, 0);
             return list;
         }
