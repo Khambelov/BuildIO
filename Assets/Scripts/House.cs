@@ -7,8 +7,8 @@ public class House : MonoBehaviour
 {
 	public EHouseState HouseState;
 	public EHouseType HouseType;
-	public int coins;
-	public int requiredWorkers;
+	public int Coins;
+	public int RequiredWorkers;
 
 	public bool BuildIsCancelled { get; }
 
@@ -33,8 +33,8 @@ public class House : MonoBehaviour
 		var parameters = BuildContainer.Instance.GetHouseByIndex(houseParamIndex);
 
 		HouseType = parameters.HouseType;
-		coins = parameters.RewardCoins;
-		requiredWorkers = parameters.RequiredWorkers;
+		Coins = parameters.RewardCoins;
+		RequiredWorkers = parameters.RequiredWorkers;
 
 		owner = null;
 		buildProgress = 0f;
@@ -44,7 +44,7 @@ public class House : MonoBehaviour
 
 	public void StartBuilding(float buildSpeed, int countWorkers, GameObject team)
 	{
-		if (HouseState == EHouseState.Destroyed && countWorkers >= requiredWorkers)
+		if (HouseState == EHouseState.Destroyed && countWorkers >= RequiredWorkers)
 		{
 			owner = team;
 
@@ -66,7 +66,7 @@ public class House : MonoBehaviour
 
 	public int GetReward()
 	{
-		return coins;
+		return Coins;
 	}
 
 	private void ChangeSprite()
