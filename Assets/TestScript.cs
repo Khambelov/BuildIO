@@ -15,7 +15,7 @@ public class TestScript : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.GetComponent<PlayerCharacter>() != null)
+		if (collision.gameObject.GetComponent<CharacterPlayer>() != null)
 		{
 			rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, rend.color.a / 2);
 		}
@@ -23,7 +23,7 @@ public class TestScript : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		if (collision.gameObject.GetComponent<PlayerCharacter>() != null)
+		if (collision.gameObject.GetComponent<CharacterPlayer>() != null)
 		{
 			rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, 1f);
 		}
