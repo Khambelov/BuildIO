@@ -76,6 +76,8 @@ public class House : MonoBehaviour
 			HouseState = EHouseState.Building;
 			ChangeSprite();
 
+			AudioManager.Instance.PlayLoopSound("Building");
+
 			StartCoroutine(BuildingHouse(buildSpeed));
 		}
 	}
@@ -119,6 +121,7 @@ public class House : MonoBehaviour
 	{
 		// var smoke = Instantiate(BuildContainer.Instance.BuildingSmoke, Vector3.zero, Quaternion.identity, transform);
 		// smoke.transform.localPosition = Vector3.zero;
+
 		smoke.gameObject.SetActive(true);
 		while (buildProgress < 100f)
 		{
@@ -135,6 +138,9 @@ public class House : MonoBehaviour
 			HouseState = EHouseState.Builded;
 			BuildContainer.Instance.DropBuildedHouse(this);
 			ChangeSprite(true);
+
+			AudioManager.Instance.StopLoopSound();
+			AudioManager.Instance.PlaySound("BuildDone");
 
 			// Destroy(smoke);
 			buildCollider.gameObject.SetActive(false);
