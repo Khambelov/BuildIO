@@ -110,7 +110,7 @@ namespace IndieMarc.TopDown
 			if (move != Vector2.zero)
 				AudioManager.Instance.PlayLoopSound("Walk");
 			else
-				AudioManager.Instance.StopLoopSound();
+				AudioManager.Instance.StopLoopSound("Walk");
 		}
 
 

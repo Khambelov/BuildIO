@@ -56,10 +56,13 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	public void StopLoopSound()
+	public void StopLoopSound(string audioTag)
 	{
-		SoundSource.Stop();
-		SoundSource.clip = null;
+		if (Sounds.Find(a => a.tag == audioTag).sound == SoundSource.clip)
+		{
+			SoundSource.Stop();
+			SoundSource.clip = null;
+		}
 	}
 
 	public void PlayAudio(string audioTag)
