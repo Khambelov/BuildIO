@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+	public static UIManager Instance;
+
 	[Header("Start Window")]
 	[SerializeField] private GameObject startWindow;
 	[SerializeField] private Button startGame;
@@ -25,7 +27,18 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private Text[] leaderFinishBoardsTexts;
 	[SerializeField] private Button restartGame;
 
-	private bool isStartGame;
+	[Header("Materials")]
+	[SerializeField] private Sprite OnAudio;
+	[SerializeField] private Sprite OffAudio;
+	[SerializeField] private Sprite OnSound;
+	[SerializeField] private Sprite OffSound;
+
+	public bool isStartGame;
+
+	private void Awake()
+	{
+		Instance = this;
+	}
 
 	private void Start()
 	{
@@ -42,7 +55,7 @@ public class UIManager : MonoBehaviour
 	{
 		if (isStartGame)
 		{
-			// teamWorkersText.text = (CharacterPlayer.Instance.employeesCount + 1).ToString();
+			teamWorkersText.text = (CharacterPlayer.Instance.getEmployeesCount()).ToString();
 
 			for (var i = 0; i < leaderGameBoardsTexts.Length; i++)
 			{
@@ -50,7 +63,7 @@ public class UIManager : MonoBehaviour
 				{
 					var score = CharacterContainer.Instance.GetSortedCharacters()[i].score;
 					var build = CharacterContainer.Instance.GetSortedCharacters()[i].buildCount;
-					var color = CharacterContainer.Instance.GetSortedCharacters()[i].teamColor;
+					var color = CharacterContainer.Instance.GetSortedCharacters()[i].playerColor;
 
 					leaderGameBoardsTexts[i].color = color;
 					leaderGameBoardsTexts[i].text = string.Concat(i + 1, ". ", score, " / ", build);
@@ -84,7 +97,7 @@ public class UIManager : MonoBehaviour
 			{
 				var score = CharacterContainer.Instance.GetSortedCharacters()[i].score;
 				var build = CharacterContainer.Instance.GetSortedCharacters()[i].buildCount;
-				var color = CharacterContainer.Instance.GetSortedCharacters()[i].teamColor;
+				var color = CharacterContainer.Instance.GetSortedCharacters()[i].playerColor;
 
 
 				leaderFinishBoardsTexts[i].color = color;
@@ -109,12 +122,14 @@ public class UIManager : MonoBehaviour
 			case "Audio":
 				{
 					AudioManager.Instance.AudioOn = !AudioManager.Instance.AudioOn;
+					audioSetting.image.sprite = AudioManager.Instance.AudioOn ? OnAudio : OffAudio;
 
 					break;
 				}
 			case "Sound":
 				{
 					AudioManager.Instance.SoundOn = !AudioManager.Instance.SoundOn;
+					soundSetting.image.sprite = AudioManager.Instance.SoundOn ? OnSound : OffSound;
 
 					break;
 				}

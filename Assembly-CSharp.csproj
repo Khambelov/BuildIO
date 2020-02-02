@@ -85,6 +85,7 @@
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CarryItem.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\Character.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterAnim.cs" />
+    <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterContainer.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterEmployee.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterHoldItem.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterPlayer.cs" />
@@ -135,11 +136,14 @@
     <Compile Include="Assets\Lean\Touch\Scripts\LeanGesture.cs" />
     <Compile Include="Assets\Lean\Touch\Scripts\LeanSnapshot.cs" />
     <Compile Include="Assets\Lean\Touch\Scripts\LeanTouch.cs" />
+    <Compile Include="Assets\Scripts\AI\BotPlayer.cs" />
+    <Compile Include="Assets\Scripts\AI\BotTargetSelector.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\BuildContainer.cs" />
     <Compile Include="Assets\Scripts\EHouseState.cs" />
     <Compile Include="Assets\Scripts\EHouseType.cs" />
     <Compile Include="Assets\Scripts\Effects\SpecialShadow.cs" />
+    <Compile Include="Assets\Scripts\Generator\ContainerEmploy.cs" />
     <Compile Include="Assets\Scripts\Generator\Generator.cs" />
     <Compile Include="Assets\Scripts\Generator\GeneratorHouse.cs" />
     <Compile Include="Assets\Scripts\Generator\GeneratorHuman.cs" />
@@ -152,6 +156,7 @@
     <Compile Include="Assets\Scripts\Objects\HouseSpawner.cs" />
     <Compile Include="Assets\Scripts\Objects\Human.cs" />
     <Compile Include="Assets\Scripts\PlayerMover.cs" />
+    <Compile Include="Assets\UIManager.cs" />
     <None Include="Assets\Lean\Common\Examples\Fonts\OFL.txt" />
     <None Include="Assets\Lean\Common\Examples\Shaders\Object.shader" />
     <None Include="Assets\Lean\Common\Examples\Shaders\Skybox.shader" />
@@ -363,6 +368,9 @@
     </Reference>
     <Reference Include="DOTween">
       <HintPath>C:/Unity/BuildIO/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>C:/Unity/BuildIO/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -724,6 +732,20 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{4E750A8C-5B8B-2B23-2CB5-610C53B119D9}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{4D000851-4840-93A2-8624-A9BD2E4F105B}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{5750DA94-D2BE-B23A-86E3-A874520C4D86}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

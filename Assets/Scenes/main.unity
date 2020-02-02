@@ -14476,7 +14476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &700220920
 PrefabInstance:
@@ -23845,7 +23845,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1124029440 stripped
 Transform:
@@ -27506,6 +27506,8 @@ MonoBehaviour:
   - {fileID: 8842580388258092429, guid: c827107747156f348893b5f825b3a741, type: 3}
   - {fileID: 5612856500167189953, guid: b5e721c38909f254ea5deb00000aa85a, type: 3}
   - {fileID: 5460595065409761921, guid: 4ab85d9e06bca124cab8c3f0098bfda9, type: 3}
+  - {fileID: 5460595065409761921, guid: 181d315796eaa9e4d9d88a0947a3997b, type: 3}
+  - {fileID: 5460595065409761921, guid: cd383666f40d90f43826201196f33350, type: 3}
   spawnerPoints1: {fileID: 297230421}
   houseParent1: {fileID: 65806184}
   prfabs2:
@@ -27628,26 +27630,40 @@ MonoBehaviour:
   BuildingSmoke: {fileID: 8186967340714339182, guid: 29d2e030445ed1544a2f905a22845fa6,
     type: 3}
   housesCollection:
-  - HouseType: 0
+  - HouseType: 2
     RewardCoins: 1000
     RequiredWorkers: 1
     DestroyedSprite: {fileID: -1621681913746983810, guid: bda60645ac1ec9347b744f59bd68b0a8,
       type: 3}
     BuildedSprite: {fileID: -5072557114322916609, guid: bda60645ac1ec9347b744f59bd68b0a8,
       type: 3}
-  - HouseType: 2
+  - HouseType: 3
     RewardCoins: 1000
     RequiredWorkers: 1
     DestroyedSprite: {fileID: 8757396837692209314, guid: 414b7015616801248be3cdbc56f35915,
       type: 3}
     BuildedSprite: {fileID: 3198413410729557013, guid: 414b7015616801248be3cdbc56f35915,
       type: 3}
-  - HouseType: 3
+  - HouseType: 0
     RewardCoins: 1000
     RequiredWorkers: 1
     DestroyedSprite: {fileID: 6161436619894888230, guid: 8512a002943bb814886784fbcbf2d8d1,
       type: 3}
     BuildedSprite: {fileID: 7846822367210436989, guid: 8512a002943bb814886784fbcbf2d8d1,
+      type: 3}
+  - HouseType: 4
+    RewardCoins: 1000
+    RequiredWorkers: 1
+    DestroyedSprite: {fileID: 8791544199267353402, guid: c83438d8cc7a0d5469a9b9e9073e000f,
+      type: 3}
+    BuildedSprite: {fileID: -7938445121044960685, guid: c83438d8cc7a0d5469a9b9e9073e000f,
+      type: 3}
+  - HouseType: 1
+    RewardCoins: 1000
+    RequiredWorkers: 1
+    DestroyedSprite: {fileID: -1154913055142988253, guid: 4a851f24625a62943bd056b8cc44321c,
+      type: 3}
+    BuildedSprite: {fileID: 7396982735975127478, guid: 4a851f24625a62943bd056b8cc44321c,
       type: 3}
   houses: []
 --- !u!4 &1277361903

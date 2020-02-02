@@ -41,6 +41,12 @@ public class AudioManager : MonoBehaviour
 		PlayAudio("Main");
 	}
 
+	private void Update()
+	{
+		AudioSource.enabled = AudioOn;
+		SoundSource.enabled = SoundOn;
+	}
+
 	public void PlaySound(string audioTag)
 	{
 		if (SoundOn)
