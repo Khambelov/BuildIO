@@ -157,7 +157,7 @@ public class House : MonoBehaviour
 
 		if (currentBuilder && HouseState == EHouseState.Destroyed && currentBuilder.getEmployeesCount() >= RequiredWorkers)
 		{
-			if (buildProgress < 100 && Vector2.Distance(transform.position, currentBuilder.transform.position) < 3)
+			if (buildProgress < 100 && Vector2.Distance(transform.position, currentBuilder.transform.position) < 5)
 			{
 				AudioManager.Instance.PlayLoopSound("Building");
 				progressBuild.gameObject.SetActive(true);
