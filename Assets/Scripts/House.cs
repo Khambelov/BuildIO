@@ -13,7 +13,7 @@ public class House : MonoBehaviour
 	public bool BuildIsCancelled { get; }
 
 	private SpriteRenderer render;
-	private int houseParamIndex;
+	public int houseParamIndex;
 
 	private float buildProgress;
 
@@ -22,14 +22,22 @@ public class House : MonoBehaviour
 	public static Color white = Color.white;
 	public static Color invis = new Color(1, 1, 1, 0.5f);
 
+	public Transform shadow;
+
 	void Start()
 	{
 		render = GetComponent<SpriteRenderer>();
 		HouseState = EHouseState.Destroyed;
 		BuildContainer.Instance.AddNewHouse(this);
-		houseParamIndex = BuildContainer.Instance.GetRandomHouseIndex();
+		// houseParamIndex = BuildContainer.Instance.GetRandomHouseIndex();
 
 		SetStartParams();
+
+		if(shadow){
+			shadow.gameObject.SetActive(false);
+			// shadow.SetParent(ShadowsContainer.instance.transform,true);
+			// shadow.transform.rotation = Quaternion.Euler(new Vector3(-90,0,0));
+		}
 	}
 
 	private void SetStartParams()
@@ -46,22 +54,22 @@ public class House : MonoBehaviour
 		ChangeSprite();
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		Debug.Log(other.gameObject);
-		if (other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
-		{
-			render.color = invis;
-		}
-	}
+	// private void OnTriggerEnter2D(Collider2D other)
+	// {
+	// 	Debug.Log(other.gameObject);
+	// 	if (other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
+	// 	{
+	// 		render.color = invis;
+	// 	}
+	// }
 
-	private void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
-		{
-			render.color = white;
-		}
-	}
+	// private void OnTriggerExit2D(Collider2D other)
+	// {
+	// 	if (other.gameObject.GetComponent<IndieMarc.TopDown.Character>() != null)
+	// 	{
+	// 		render.color = white;
+	// 	}
+	// }
 
 	public void StartBuilding(float buildSpeed, int countWorkers, GameObject team)
 	{
