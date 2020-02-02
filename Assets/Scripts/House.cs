@@ -139,7 +139,6 @@ public class House : MonoBehaviour
 			{
 				smoke.gameObject.SetActive(true);
 				buildProgress += currentBuilder.getEmployeesCount()*Time.deltaTime;
-				Debug.Log(buildProgress);
 			}else
 			{
 				smoke.gameObject.SetActive(false);
