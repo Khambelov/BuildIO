@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3986801936253890636
+--- !u!1001 &3562565303093847820
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,62 +11,57 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8757396837692209314, guid: 414b7015616801248be3cdbc56f35915,
+      objectReference: {fileID: -1154913055142988253, guid: 4a851f24625a62943bd056b8cc44321c,
         type: 3}
     - target: {fileID: 3066510932196979113, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3066510932196979113, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5475996099037331445, guid: c827107747156f348893b5f825b3a741,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5912795154867067211, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: houseParamIndex
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5912795154867067211, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: HouseType
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6346219835910134473, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6346219835910134473, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6830562629735299744, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_Offset.y
-      value: -3.114726
+      value: -6.622218
       objectReference: {fileID: 0}
     - target: {fileID: 6830562629735299744, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.98903275
+      value: 1.9678702
       objectReference: {fileID: 0}
     - target: {fileID: 6830562629735299744, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.01932478
+      value: -0.5962982
       objectReference: {fileID: 0}
     - target: {fileID: 6830562629735299744, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_Size.x
-      value: 3.5817537
+      value: 8.447065
       objectReference: {fileID: 0}
     - target: {fileID: 8189934815521799190, guid: c827107747156f348893b5f825b3a741,
         type: 3}
@@ -76,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 8189934815521799190, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.259
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8402315542272823374, guid: c827107747156f348893b5f825b3a741,
         type: 3}
@@ -136,7 +131,12 @@ PrefabInstance:
     - target: {fileID: 8842580388258092429, guid: c827107747156f348893b5f825b3a741,
         type: 3}
       propertyPath: m_Name
-      value: houseMain1
+      value: houseMain3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929578472413948764, guid: c827107747156f348893b5f825b3a741,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c827107747156f348893b5f825b3a741, type: 3}

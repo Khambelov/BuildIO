@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 2b6f4b051f2c12d4fa692a3f0b38dde5
+guid: 4a851f24625a62943bd056b8cc44321c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6420026617269363000
-    second: booster1_0
+      213: 7396982735975127478
+    second: house5_0
+  - first:
+      213: -4230185518911558892
+    second: house5_0
+  - first:
+      213: -1154913055142988253
+    second: house5_1
+  - first:
+      213: -6633134815686391190
+    second: house5_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -45,7 +54,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -125,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: booster1_0
+      name: house5_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 300
+        width: 2000
+        height: 2000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +148,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ce5b1d6ecb77e6a0800000000000000
-      internalID: -6420026617269363000
+      spriteID: 41b664bdeac5b45c0800000000000000
+      internalID: -4230185518911558892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: house5_1
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 2000
+        height: 2000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326bdb102bce8ffe0800000000000000
+      internalID: -1154913055142988253
       vertices: []
       indices: 
       edges: []

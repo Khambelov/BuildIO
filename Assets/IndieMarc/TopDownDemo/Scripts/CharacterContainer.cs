@@ -14,10 +14,6 @@ public class CharacterContainer : MonoBehaviour
 	private void Awake()
 	{
 		instance = this;
-	}
-
-	private void Start()
-	{
 		characters = new List<Character>();
 	}
 

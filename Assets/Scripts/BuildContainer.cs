@@ -37,6 +37,11 @@ public class BuildContainer : MonoBehaviour
 		return housesCollection[index];
 	}
 
+	public HouseParams GetHouseByType(EHouseType type)
+	{
+		return housesCollection.FirstOrDefault(h => h.HouseType == type);
+	}
+
 	public void AddNewHouse(House house)
 	{
 		houses.Add(house);

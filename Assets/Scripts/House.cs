@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class House : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class House : MonoBehaviour
 
 	private float buildProgress;
 
-	private GameObject owner;
 	public IndieMarc.TopDown.Character currentBuilder;
 
 	public static Color white = Color.white;
@@ -26,26 +26,31 @@ public class House : MonoBehaviour
 
 	public Collider2D buildCollider;
 	public GameObject smoke;
+	public Image progressBuild;
+	public Image iconState;
+	public Sprite finishIcon;
 
-	void Start()
+	void OnEnable()
 	{
 		render = GetComponent<SpriteRenderer>();
 		HouseState = EHouseState.Destroyed;
 		BuildContainer.Instance.AddNewHouse(this);
 		smoke.gameObject.SetActive(false);
 
+		progressBuild.gameObject.SetActive(false);
+		iconState.gameObject.SetActive(false);
+
 		SetStartParams();
 	}
 
 	private void SetStartParams()
 	{
-		var parameters = BuildContainer.Instance.GetHouseByIndex(houseParamIndex);
+		var parameters = BuildContainer.Instance.GetHouseByType(HouseType);
 
 		HouseType = parameters.HouseType;
 		Coins = parameters.RewardCoins;
 		RequiredWorkers = parameters.RequiredWorkers;
 
-		owner = null;
 		buildProgress = 0f;
 
 		ChangeSprite();
@@ -72,8 +77,6 @@ public class House : MonoBehaviour
 	{
 		if (HouseState == EHouseState.Destroyed && countWorkers >= RequiredWorkers)
 		{
-			owner = team;
-
 			HouseState = EHouseState.Building;
 			ChangeSprite();
 
@@ -102,12 +105,12 @@ public class House : MonoBehaviour
 	{
 		if (HouseState == EHouseState.Destroyed)
 		{
-			render.sprite = BuildContainer.Instance.GetHouseByIndex(houseParamIndex).DestroyedSprite;
+			render.sprite = BuildContainer.Instance.GetHouseByType(HouseType).DestroyedSprite;
 		}
 
 		if (HouseState == EHouseState.Builded)
 		{
-			render.sprite = BuildContainer.Instance.GetHouseByIndex(houseParamIndex).BuildedSprite;
+			render.sprite = BuildContainer.Instance.GetHouseByType(HouseType).BuildedSprite;
 			if (grow)
 			{
 				Vector3 beginScale = transform.localScale;
@@ -130,10 +133,21 @@ public class House : MonoBehaviour
 		{
 			AudioManager.Instance.StopLoopSound("Building");
 			AudioManager.Instance.PlaySound("BuildDone");
+			progressBuild.gameObject.SetActive(false);
+			progressBuild.color = Color.white;
+			progressBuild.fillAmount = 0f;
+
+			iconState.gameObject.SetActive(true);
+			iconState.sprite = finishIcon;
 
 			HouseState = EHouseState.Builded;
 			ChangeSprite(true);
 			smoke.gameObject.SetActive(false);
+
+			if (HouseType == EHouseType.Orange)
+			{
+				GetComponent<Animator>().enabled = true;
+			}
 
 			currentBuilder.buildCount++;
 			currentBuilder.score += Coins;
@@ -146,13 +160,22 @@ public class House : MonoBehaviour
 			if (buildProgress < 100 && Vector2.Distance(transform.position, currentBuilder.transform.position) < 3)
 			{
 				AudioManager.Instance.PlayLoopSound("Building");
+				progressBuild.gameObject.SetActive(true);
+				progressBuild.color = currentBuilder.teamColor;
+				iconState.gameObject.SetActive(true);
 
 				smoke.gameObject.SetActive(true);
 				buildProgress += currentBuilder.getEmployeesCount() * Time.deltaTime;
+				progressBuild.fillAmount = buildProgress / 100f;
+
 			}
 			else
 			{
 				AudioManager.Instance.StopLoopSound("Building");
+				progressBuild.gameObject.SetActive(false);
+				progressBuild.color = Color.white;
+				progressBuild.fillAmount = 0f;
+				iconState.gameObject.SetActive(false);
 
 				smoke.gameObject.SetActive(false);
 				currentBuilder = null;

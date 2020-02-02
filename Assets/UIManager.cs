@@ -127,7 +127,7 @@ public class UIManager : MonoBehaviour
 
 	IEnumerator GameTimer()
 	{
-		int time = 20;
+		int time = 200;
 		int min = time / 60;
 		int sec = time % 60;
 		gameTimeText.text = string.Concat(min < 10f ? ("0" + min).ToString() : min.ToString(), ":", sec < 10f ? ("0" + sec).ToString() : sec.ToString());
