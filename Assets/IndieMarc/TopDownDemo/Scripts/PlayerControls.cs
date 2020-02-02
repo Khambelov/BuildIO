@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Player controls for platformer demo
@@ -43,6 +44,8 @@ namespace IndieMarc.TopDown
 
 		void Update()
 		{
+			if (EventSystem.current.IsPointerOverGameObject()) return;
+
 			move = Vector2.zero;
 			action_hold = false;
 			action_press = false;
@@ -57,9 +60,9 @@ namespace IndieMarc.TopDown
 					move += Vector2.right;
 				if (Input.GetTouch(0).position.x - startPoint.x < 0)
 					move += -Vector2.right;
-				if (Input.GetTouch(0).position.y - startPoint.y > 0)
+				if (Input.GetTouch(0).position.y - startPoint.y > 10f)
 					move += Vector2.up;
-				if (Input.GetTouch(0).position.y - startPoint.y < 0)
+				if (Input.GetTouch(0).position.y - startPoint.y < -10f)
 					move += -Vector2.up;
 			}
 			else
@@ -73,16 +76,15 @@ namespace IndieMarc.TopDown
 			{
 				if (startPoint == Vector3.zero)
 				{
-					Debug.Log("L");
 					startPoint = Input.mousePosition;
 				}
 				if (Input.mousePosition.x - startPoint.x > 0)
 					move += Vector2.right;
 				if (Input.mousePosition.x - startPoint.x < 0)
 					move += -Vector2.right;
-				if (Input.mousePosition.y - startPoint.y > 0)
+				if (Input.mousePosition.y - startPoint.y > 10f)
 					move += Vector2.up;
-				if (Input.mousePosition.y - startPoint.y < 0)
+				if (Input.mousePosition.y - startPoint.y < -10f)
 					move += -Vector2.up;
 			}
 			else
