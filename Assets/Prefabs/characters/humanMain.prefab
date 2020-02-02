@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 5648973738032884996}
   - component: {fileID: 5648973738032884997}
   - component: {fileID: 5648973738032885002}
-  - component: {fileID: 5648973738032885003}
   - component: {fileID: 5648973738032885000}
   - component: {fileID: 5648973738032884999}
   m_Layer: 0
@@ -301,18 +300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 5648017813253681917}
---- !u!114 &5648973738032885003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5648973738032885001}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f172f44960bd7249a62ad20f1cf1ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5648973738032885000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6526f6db74563a7489d706d6df8655a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &5648973738032884999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,8 +332,4 @@ MonoBehaviour:
   move_accel: 10
   move_deccel: 20
   move_max: 3
-  employeesCount: 0
-  employeesList: []
-  employePrefab: {fileID: 1378692596590864, guid: cdd659b6cba2ab94ea189c25db997aa4,
-    type: 3}
   controls: {fileID: 0}

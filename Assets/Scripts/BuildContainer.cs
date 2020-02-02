@@ -13,7 +13,7 @@ public class BuildContainer : MonoBehaviour
 	[SerializeField]
 	private HouseParams[] housesCollection;
 
-	private List<House> houses;
+	public List<House> houses;
 
 	void Awake()
 	{

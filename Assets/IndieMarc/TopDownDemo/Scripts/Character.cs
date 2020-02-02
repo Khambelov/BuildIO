@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 /// <summary>
 /// Top down character movement
@@ -46,6 +47,10 @@ namespace IndieMarc.TopDown
 
         private static Dictionary<int, Character> character_list = new Dictionary<int, Character>();
 
+        [Header("Employees")]
+        protected List<IndieMarc.TopDown.CharacterEmployee> employeesList = new List<CharacterEmployee>();
+
+        public Color playerColor;
 
         void Awake()
         {
@@ -54,16 +59,89 @@ namespace IndieMarc.TopDown
             animator = GetComponent<Animator>();
             auto_order = GetComponent<AutoOrderLayer>();
             hp = max_hp;
+            GetComponent<SpriteRenderer>().color = playerColor;
         }
 
         public virtual int getEmployeesCount()
         {
-            return 0;
+            return employeesList.Count+1;
+        }
+
+        public void EmployeeAdd(Vector3 spawnPosition)
+        {
+            if (spawnPosition == Vector3.zero)
+            {
+                Vector2 spawnCircle = UnityEngine.Random.insideUnitCircle * 5;
+                spawnPosition = new Vector3(transform.position.x + spawnCircle.x, transform.position.y + spawnCircle.y, transform.position.z);
+            }
+
+            CharacterEmployee newEmployee = ContainerEmploy.instance.getEmploy();
+            newEmployee.setColor(playerColor);
+            newEmployee.move_max = PlayerMover.Instance.GetComponent<Character>().move_max;
+            newEmployee.move_accel = PlayerMover.Instance.GetComponent<Character>().move_accel;
+            newEmployee.move_deccel = PlayerMover.Instance.GetComponent<Character>().move_deccel;
+            newEmployee.transform.position =spawnPosition;
+            newEmployee.transform.rotation = transform.rotation;            
+            
+
+
+            newEmployee.owner = this;
+            employeesList.Add(newEmployee);
+            // if (employeesCount < employeesList.Count) employeesCount = employeesList.Count;
+
+            AudioManager.Instance.PlaySound("Join");
+        }
+
+        private void OnCollisionEnter2D(Collision2D other) {
+            Human human = other.gameObject.GetComponent<Human>();
+            if(human)
+            {
+                Debug.Log(gameObject.name  + " getHuman");
+                EmployeeAdd(other.gameObject.transform.position);
+                PoolingManager.Instance.release(human);
+            }
+        }
+
+        
+       protected  House currentHouse;
+
+        private  void OnCollisionStay2D(Collision2D collision)
+        {
+            HouseBuildCollider hbcollider = collision.gameObject.GetComponent<HouseBuildCollider>();
+            if (hbcollider != null)
+            {
+                currentHouse = hbcollider.house;
+                currentHouse.currentBuilder = this;
+                // currentHouse.StartBuilding(GetBuildSpeed(hbcollider.house.RequiredWorkers), employeesCount + 1, gameObject);
+                // StartCoroutine(buildToBuild());
+            }
+        }    
+
+        private float GetBuildSpeed(int requiredWorkers)
+        {
+            float workers = (float)requiredWorkers;
+            float employee = (float)getEmployeesCount();
+            float result = ((workers / 120f) / workers) * employee * 100f;
+
+            if (result > 14.3f)
+                result = 14.3f;
+
+            return getEmployeesCount();
+            // return result;
         }
 
         void OnDestroy()
         {
             character_list.Remove(player_id);
+        }
+
+        public void EmployeeRemove()
+        {
+            if(employeesList.Count<=0)
+                return;
+                
+            Destroy(employeesList.Last().gameObject);
+            employeesList.Remove(employeesList.Last());
         }
 
         public void StartRepair(Building building)

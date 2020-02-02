@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Human : MonoBehaviour
 {
-
+    public bool used = false;
+    public bool busy = false;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,7 @@ public class Human : MonoBehaviour
 
     IEnumerator ystroyDestroy()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(20);
         PoolingManager.Instance.release(this);
     }
 }

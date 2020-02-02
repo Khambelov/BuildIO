@@ -7,15 +7,20 @@ using UnityEngine;
 
 namespace IndieMarc.TopDown
 {
-    class CharacterEmployee : Character
+    public class CharacterEmployee : Character
     {
         [Header("Owner")]
-        public GameObject owner;
+        public Character owner;
         public Vector3 movePosition;
 
         void Start()
         {
             movePosition = transform.position;
+        }
+
+        public void setColor(Color color)
+        {
+            GetComponent<SpriteRenderer>().color = color;
         }
 
         //Handle physics
@@ -54,5 +59,18 @@ namespace IndieMarc.TopDown
                 side = Mathf.Sign(lookat.x);
 
         }
+
+            
+        private void OnTriggerEnter2D(Collider2D other) {
+            CharacterEmployee enemy = other.GetComponent<CharacterEmployee>();
+            if(enemy && enemy.owner!=owner && enemy.owner!=null)
+            {
+                if(owner.getEmployeesCount()>enemy.owner.getEmployeesCount())
+                {
+                    enemy.owner.EmployeeRemove();
+                }
+            }
+        }
     }
+
 }

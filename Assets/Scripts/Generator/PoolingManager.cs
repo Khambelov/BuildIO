@@ -9,7 +9,7 @@ public class PoolingManager : MonoBehaviour
 
     [Header("Prefabs")]
     public Human prefabHuman;
-    public House prefabHouse;
+    public IndieMarc.TopDown.CharacterEmployee prefabEmpl;
 
     [Header("Pool parent")]
     public Transform deactivatedPool;
@@ -17,11 +17,8 @@ public class PoolingManager : MonoBehaviour
     List<Human> humanPool =new List<Human>();
     List<Human> humanPoolArchive =new List<Human>();
 
-    List<House> housePool = new List<House>();
-    List<House> housePoolArchive = new List<House>();
-
-    // List<PoolObject> boosterPool;
-    // List<PoolObject> boosterPoolArchive;
+    List<IndieMarc.TopDown.CharacterEmployee> emplPool = new List<IndieMarc.TopDown.CharacterEmployee>();
+    List<IndieMarc.TopDown.CharacterEmployee> emplPoolArchive = new List<IndieMarc.TopDown.CharacterEmployee>();
 
     private void Awake() 
     {
@@ -53,13 +50,13 @@ public class PoolingManager : MonoBehaviour
         }
     }
 
-    public House getHouse()
+    public IndieMarc.TopDown.CharacterEmployee getEmploy()
     {
-        if(housePoolArchive.Count>0)
+        if(emplPoolArchive.Count>0)
         {
-            House value = housePoolArchive[0];
-            housePoolArchive.RemoveAt(0);
-            housePool.Add(value);
+            IndieMarc.TopDown.CharacterEmployee value = emplPoolArchive[0];
+            emplPoolArchive.RemoveAt(0);
+            emplPool.Add(value);
             
             value.transform.SetParent(null);
             value.gameObject.SetActive(true);
@@ -67,24 +64,27 @@ public class PoolingManager : MonoBehaviour
         }
         else
         {
-            House value = Instantiate(prefabHouse);
-            housePool.Add(value);
+            IndieMarc.TopDown.CharacterEmployee value = Instantiate(prefabEmpl);
+            emplPool.Add(value);
             return value;
         }
     }
 
     public void release(Human value)
     {
+        value.busy = false;
+        value.used = false;
         humanPool.Remove(value);
         humanPoolArchive.Add(value);
         value.transform.SetParent(deactivatedPool);
         value.gameObject.SetActive(false);
+        ContainerEmploy.instance.removeHuman(value);
     }
 
-    public void release(House value)
+    public void release(IndieMarc.TopDown.CharacterEmployee value)
     {
-        housePool.Remove(value);
-        housePoolArchive.Add(value);
+        emplPool.Remove(value);
+        emplPoolArchive.Add(value);
         value.transform.SetParent(deactivatedPool);
         value.gameObject.SetActive(false);
     }
