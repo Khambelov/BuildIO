@@ -59,9 +59,10 @@ namespace IndieMarc.TopDown
 
         private void OnCollisionStay2D(Collision2D collision)
         {
-            if (collision.gameObject.GetComponent<House>() != null && controls.IsStay)
+            HouseBuildCollider hbcollider = collision.gameObject.GetComponent<HouseBuildCollider>();
+            if (hbcollider != null && controls.IsStay)
             {
-                collision.gameObject.GetComponent<House>().StartBuilding(GetBuildSpeed(collision.gameObject.GetComponent<House>().RequiredWorkers), employeesCount + 1, gameObject);
+                hbcollider.house.StartBuilding(GetBuildSpeed(hbcollider.house.RequiredWorkers), employeesCount + 1, gameObject);
             }
         }
 

@@ -22,22 +22,17 @@ public class House : MonoBehaviour
 	public static Color white = Color.white;
 	public static Color invis = new Color(1, 1, 1, 0.5f);
 
-	public Transform shadow;
+	public Collider2D buildCollider;
+	public GameObject smoke;
 
 	void Start()
 	{
 		render = GetComponent<SpriteRenderer>();
 		HouseState = EHouseState.Destroyed;
 		BuildContainer.Instance.AddNewHouse(this);
-		// houseParamIndex = BuildContainer.Instance.GetRandomHouseIndex();
+		smoke.gameObject.SetActive(false);
 
 		SetStartParams();
-
-		if(shadow){
-			shadow.gameObject.SetActive(false);
-			// shadow.SetParent(ShadowsContainer.instance.transform,true);
-			// shadow.transform.rotation = Quaternion.Euler(new Vector3(-90,0,0));
-		}
 	}
 
 	private void SetStartParams()
@@ -109,13 +104,13 @@ public class House : MonoBehaviour
 
 	private IEnumerator BuildingHouse(float buildSpeed)
 	{
-		var smoke = Instantiate(BuildContainer.Instance.BuildingSmoke, Vector3.zero, Quaternion.identity, transform);
-		smoke.transform.localPosition = Vector3.zero;
-
+		// var smoke = Instantiate(BuildContainer.Instance.BuildingSmoke, Vector3.zero, Quaternion.identity, transform);
+		// smoke.transform.localPosition = Vector3.zero;
+		smoke.gameObject.SetActive(true);
 		while (buildProgress < 100f)
 		{
-			buildProgress += buildSpeed;
-			Debug.Log(buildProgress);
+			// buildProgress += buildSpeed;
+			buildProgress += 20;
 
 			yield return new WaitForSeconds(1f);
 		}
@@ -128,7 +123,9 @@ public class House : MonoBehaviour
 			BuildContainer.Instance.DropBuildedHouse(this);
 			ChangeSprite();
 
-			Destroy(smoke);
+			// Destroy(smoke);
+			buildCollider.gameObject.SetActive(false);
+			smoke.gameObject.SetActive(false);
 
 			//Сделать что-то с персонажем, например, флажок покрасить
 		}

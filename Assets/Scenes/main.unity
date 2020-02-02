@@ -24859,8 +24859,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prfabs1:
   - {fileID: 8842580388258092429, guid: c827107747156f348893b5f825b3a741, type: 3}
-  - {fileID: 8700462373144420232, guid: b5e721c38909f254ea5deb00000aa85a, type: 3}
-  - {fileID: 6402900497781596584, guid: 4ab85d9e06bca124cab8c3f0098bfda9, type: 3}
+  - {fileID: 5612856500167189953, guid: b5e721c38909f254ea5deb00000aa85a, type: 3}
+  - {fileID: 5460595065409761921, guid: 4ab85d9e06bca124cab8c3f0098bfda9, type: 3}
   spawnerPoints1: {fileID: 297230421}
   houseParent1: {fileID: 65806184}
   prfabs2:
@@ -24979,22 +24979,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24f65666f6a17143a396023598d923e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildingSmoke: {fileID: 11858480257825139, guid: 0867a61c43a102543bab6c107c431982,
+  BuildingSmoke: {fileID: 8186967340714339182, guid: 29d2e030445ed1544a2f905a22845fa6,
     type: 3}
   housesCollection:
   - HouseType: 0
     RewardCoins: 1000
     RequiredWorkers: 1
-    DestroyedSprite: {fileID: 8757396837692209314, guid: 414b7015616801248be3cdbc56f35915,
+    DestroyedSprite: {fileID: -1621681913746983810, guid: bda60645ac1ec9347b744f59bd68b0a8,
       type: 3}
-    BuildedSprite: {fileID: 3198413410729557013, guid: 414b7015616801248be3cdbc56f35915,
+    BuildedSprite: {fileID: -5072557114322916609, guid: bda60645ac1ec9347b744f59bd68b0a8,
       type: 3}
   - HouseType: 2
     RewardCoins: 1000
     RequiredWorkers: 1
-    DestroyedSprite: {fileID: -1621681913746983810, guid: bda60645ac1ec9347b744f59bd68b0a8,
+    DestroyedSprite: {fileID: 8757396837692209314, guid: 414b7015616801248be3cdbc56f35915,
       type: 3}
-    BuildedSprite: {fileID: -5072557114322916609, guid: bda60645ac1ec9347b744f59bd68b0a8,
+    BuildedSprite: {fileID: 3198413410729557013, guid: 414b7015616801248be3cdbc56f35915,
       type: 3}
   - HouseType: 3
     RewardCoins: 1000
@@ -29730,7 +29730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1378693088243380}
-  target_offset: {x: 0, y: -7, z: -20}
+  target_offset: {x: 0, y: -15, z: -25}
   camera_speed: 5
 --- !u!1001 &1635077362
 PrefabInstance:

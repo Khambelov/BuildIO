@@ -16,11 +16,11 @@ public class PoolingManager2 : MonoBehaviour
     public Transform houseParent2;
 
     private void Start() {
-        generate(prfabs1,spawnerPoints1,houseParent1,5);
-        generate(prfabs2,spawnerPoints2,houseParent2,0);
+        generate(prfabs1,spawnerPoints1,houseParent1,5,0);
+        generate(prfabs2,spawnerPoints2,houseParent2,0,-30);
     }
 
-    void generate(GameObject[] prefabs, Transform spawnerPoints,Transform parent,float shift = 0)
+    void generate(GameObject[] prefabs, Transform spawnerPoints,Transform parent,float shift = 0,float angle=0)
     {
         foreach(Transform tf in spawnerPoints)
         {
@@ -29,6 +29,7 @@ public class PoolingManager2 : MonoBehaviour
             Vector3 pos =  house.transform.position;
             pos.z = shift;
             house.transform.position = pos;
+            house.transform.rotation = Quaternion.Euler(new Vector3(angle,0,0));
             house.transform.SetParent(parent);
         }
 
