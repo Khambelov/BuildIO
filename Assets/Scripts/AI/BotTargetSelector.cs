@@ -13,13 +13,16 @@ public class BotTargetSelector : MonoBehaviour
     }
 
     private void Start() {
-        player= PlayerMover.Instance.GetComponent<IndieMarc.TopDown.Character>();
+       
     }
 
     IndieMarc.TopDown.Character player;
 
     public Transform findTarget(IndieMarc.TopDown.Character botChar,Transform lastTarget,out bool humanMode)
     {
+        if(player==null)
+            player= PlayerMover.Instance.GetComponent<IndieMarc.TopDown.Character>();
+
         humanMode = false;
         List<Transform> finals = new List<Transform>();
          Vector2 playerPos = PlayerMover.Instance.transform.position;

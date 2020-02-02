@@ -22,7 +22,7 @@ namespace IndieMarc.TopDown
             buildCount = 0;
             teamColor = Color.red;
 
-            CharacterContainer.Instance.AddNewCharacter(this);
+            // CharacterContainer.Instance.AddNewCharacter(this);
         }
 
         //Handle physics
