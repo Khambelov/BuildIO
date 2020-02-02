@@ -19,6 +19,7 @@ public class House : MonoBehaviour
 	private float buildProgress;
 
 	private GameObject owner;
+	public IndieMarc.TopDown.Character currentBuilder;
 
 	public static Color white = Color.white;
 	public static Color invis = new Color(1, 1, 1, 0.5f);
@@ -85,8 +86,9 @@ public class House : MonoBehaviour
 		StopAllCoroutines();
 
 		HouseState = EHouseState.Destroyed;
-		buildProgress = 0f;
+		// buildProgress = 0f;
 		ChangeSprite();
+		smoke.gameObject.SetActive(false);
 	}
 
 	public int GetReward()
@@ -115,15 +117,64 @@ public class House : MonoBehaviour
 
 	}
 
+	private void Update() 
+	{
+		if(HouseState == EHouseState.Builded)
+		{
+			return;
+		}
+
+		if(buildProgress>=100 && HouseState== EHouseState.Destroyed)
+		{
+			HouseState =EHouseState.Builded;
+			ChangeSprite(true);
+			smoke.gameObject.SetActive(false);
+			return;
+		}
+
+		if (currentBuilder && HouseState == EHouseState.Destroyed && currentBuilder.getEmployeesCount() >= RequiredWorkers)
+		{
+			
+			if(buildProgress<100 && Vector2.Distance(transform.position,currentBuilder.transform.position)<3)
+			{
+				smoke.gameObject.SetActive(true);
+				buildProgress += currentBuilder.getEmployeesCount()*Time.deltaTime;
+				Debug.Log(buildProgress);
+			}else
+			{
+				smoke.gameObject.SetActive(false);
+				currentBuilder=null;
+			}
+
+			// owner = team;
+
+			// HouseState = EHouseState.Building;
+			// ChangeSprite();
+
+			// StartCoroutine(BuildingHouse(buildSpeed));
+		}
+	}
+
 	private IEnumerator BuildingHouse(float buildSpeed)
 	{
-		// var smoke = Instantiate(BuildContainer.Instance.BuildingSmoke, Vector3.zero, Quaternion.identity, transform);
-		// smoke.transform.localPosition = Vector3.zero;
 		smoke.gameObject.SetActive(true);
+
+		float seconds = 0;
 		while (buildProgress < 100f)
 		{
-			// buildProgress += buildSpeed;
-			buildProgress += 20;
+			buildProgress += buildSpeed;
+
+			////////////////////
+			Debug.Log("build speed "+buildSpeed  + "/"+buildProgress + " seconds "+seconds);
+			seconds++;
+
+			if(Vector2.Distance(transform.position,currentBuilder.transform.position)>3)
+			{
+				smoke.gameObject.SetActive(false);
+				HouseState = EHouseState.Destroyed;
+				Debug.Log("finish him");
+				yield break;
+			}
 
 			yield return new WaitForSeconds(1f);
 		}

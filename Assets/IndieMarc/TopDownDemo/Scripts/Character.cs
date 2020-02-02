@@ -46,6 +46,7 @@ namespace IndieMarc.TopDown
 
         private static Dictionary<int, Character> character_list = new Dictionary<int, Character>();
 
+
         void Awake()
         {
             character_list[player_id] = this;
@@ -53,6 +54,11 @@ namespace IndieMarc.TopDown
             animator = GetComponent<Animator>();
             auto_order = GetComponent<AutoOrderLayer>();
             hp = max_hp;
+        }
+
+        public virtual int getEmployeesCount()
+        {
+            return 0;
         }
 
         void OnDestroy()
