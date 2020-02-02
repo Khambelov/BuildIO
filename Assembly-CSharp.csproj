@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Generator\GeneratorHouse.cs" />
     <Compile Include="Assets\Scripts\Generator\GeneratorHuman.cs" />
     <Compile Include="Assets\Scripts\Generator\PoolingManager.cs" />
+    <Compile Include="Assets\Scripts\Generator\PoolingManager2.cs" />
     <Compile Include="Assets\Scripts\House.cs" />
     <Compile Include="Assets\Scripts\HouseParams.cs" />
     <Compile Include="Assets\Scripts\Map\ShadowsContainer.cs" />
