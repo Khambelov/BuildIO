@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,11 @@ namespace IndieMarc.TopDown
                 else EmployeeRemove();
         }
 
+        public override int getEmployeesCount()
+        {
+            return employeesCount+1;
+        }
+
         public void EmployeeAdd(Vector3 spawnPosition)
         {
             if (spawnPosition == Vector3.zero)
@@ -59,14 +65,34 @@ namespace IndieMarc.TopDown
             employeesList.Remove(employeesList.Last());
         }
 
+        House currentHouse;
+
         private void OnCollisionStay2D(Collision2D collision)
         {
             HouseBuildCollider hbcollider = collision.gameObject.GetComponent<HouseBuildCollider>();
             if (hbcollider != null && controls.IsStay)
             {
-                hbcollider.house.StartBuilding(GetBuildSpeed(hbcollider.house.RequiredWorkers), employeesCount + 1, gameObject);
+                currentHouse = hbcollider.house;
+                currentHouse.currentBuilder = this;
+                // currentHouse.StartBuilding(GetBuildSpeed(hbcollider.house.RequiredWorkers), employeesCount + 1, gameObject);
+                // StartCoroutine(buildToBuild());
             }
         }
+
+        // IEnumerator buildToBuild()
+        // {
+        //     while(currentHouse && Vector2.Distance(transform.position,currentHouse.transform.position)<=3)
+        //     {
+        //         Debug.Log("dist "+Vector2.Distance(transform.position,currentHouse.transform.position));
+        //         yield return null;
+        //     }
+
+        //     if(currentHouse)
+        //     {
+        //         currentHouse.CancelBuildings();
+        //         currentHouse = null;
+        //     }
+        // }       
 
         private float GetBuildSpeed(int requiredWorkers)
         {
@@ -77,7 +103,8 @@ namespace IndieMarc.TopDown
             if (result > 14.3f)
                 result = 14.3f;
 
-            return result;
+            return employeesCount+1;
+            // return result;
         }
 
         //Handle render and controls

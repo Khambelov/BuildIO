@@ -104,6 +104,7 @@ MonoBehaviour:
   Coins: 1000
   RequiredWorkers: 1
   houseParamIndex: 0
+  currentBuilder: {fileID: 0}
   buildCollider: {fileID: 6830562629735299744}
   smoke: {fileID: 4325371838918321316}
 --- !u!50 &1349659102478815571
@@ -360,7 +361,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.27121353, y: -2.3314266}
+  m_Offset: {x: -0.27121353, y: -1.5514058}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -371,7 +372,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.085531, y: 0.7141061}
+  m_Size: {x: 4.085531, y: 0.9158118}
   m_EdgeRadius: 0
 --- !u!114 &3963200002022147235
 MonoBehaviour:
@@ -477,6 +478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Smoke30Frames
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186967340714339182, guid: 29d2e030445ed1544a2f905a22845fa6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d2e030445ed1544a2f905a22845fa6, type: 3}

@@ -25092,8 +25092,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e68c786886fae84e94364917d6f2604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startNum: 10
-  radiusSpawn: 10
+  startNum: 50
+  radiusSpawn: 20
   radiusCheck: 8
   checkLayers:
     serializedVersion: 2
