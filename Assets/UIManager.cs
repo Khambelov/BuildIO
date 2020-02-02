@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
 	{
 		if (isStartGame)
 		{
-			teamWorkersText.text = (CharacterPlayer.Instance.employeesCount + 1).ToString();
+			// teamWorkersText.text = (CharacterPlayer.Instance.employeesCount + 1).ToString();
 
 			for (var i = 0; i < leaderGameBoardsTexts.Length; i++)
 			{
