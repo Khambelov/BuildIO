@@ -43,8 +43,11 @@ namespace IndieMarc.TopDown
 
             if (item.item_type == "Employee")
             {
+                if(character.GetComponent<CharacterPlayer>()){
+                Debug.Log(character.gameObject);
                 ((CharacterPlayer)character).EmployeeAdd(item.gameObject.transform.position);
                 item.Destroy();
+                }
                 return;
             }
 
