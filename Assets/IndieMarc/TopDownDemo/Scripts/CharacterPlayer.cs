@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace IndieMarc.TopDown
         public int employeesCount;
         public List<CharacterEmployee> employeesList;
         public GameObject employePrefab;
+        public PlayerControls controls;
 
         //Handle physics
         void FixedUpdate()
@@ -27,10 +29,16 @@ namespace IndieMarc.TopDown
 
             //Move
             rigid.velocity = move;
+            state = move != Vector2.zero ? State.moving : state != State.working ? State.idle : State.working;
 
             if (employeesCount != employeesList.Count)
                 if (employeesCount > employeesList.Count) EmployeeAdd(Vector3.zero);
                 else EmployeeRemove();
+        }
+
+        public override int getEmployeesCount()
+        {
+            return employeesCount+1;
         }
 
         public void EmployeeAdd(Vector3 spawnPosition)
@@ -47,12 +55,56 @@ namespace IndieMarc.TopDown
             newEmployee.owner = gameObject;
             employeesList.Add(newEmployee);
             if (employeesCount < employeesList.Count) employeesCount = employeesList.Count;
+
+            AudioManager.Instance.PlaySound("Join");
         }
 
         private void EmployeeRemove()
         {
             Destroy(employeesList.Last().gameObject);
             employeesList.Remove(employeesList.Last());
+        }
+
+        House currentHouse;
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            HouseBuildCollider hbcollider = collision.gameObject.GetComponent<HouseBuildCollider>();
+            if (hbcollider != null && controls.IsStay)
+            {
+                currentHouse = hbcollider.house;
+                currentHouse.currentBuilder = this;
+                // currentHouse.StartBuilding(GetBuildSpeed(hbcollider.house.RequiredWorkers), employeesCount + 1, gameObject);
+                // StartCoroutine(buildToBuild());
+            }
+        }
+
+        // IEnumerator buildToBuild()
+        // {
+        //     while(currentHouse && Vector2.Distance(transform.position,currentHouse.transform.position)<=3)
+        //     {
+        //         Debug.Log("dist "+Vector2.Distance(transform.position,currentHouse.transform.position));
+        //         yield return null;
+        //     }
+
+        //     if(currentHouse)
+        //     {
+        //         currentHouse.CancelBuildings();
+        //         currentHouse = null;
+        //     }
+        // }       
+
+        private float GetBuildSpeed(int requiredWorkers)
+        {
+            float workers = (float)requiredWorkers;
+            float employee = (float)employeesCount + 1f;
+            float result = ((workers / 120f) / workers) * employee * 100f;
+
+            if (result > 14.3f)
+                result = 14.3f;
+
+            return employeesCount+1;
+            // return result;
         }
 
         //Handle render and controls

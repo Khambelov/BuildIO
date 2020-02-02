@@ -16,6 +16,8 @@ namespace IndieMarc.TopDown
 
         [Header("Stats")]
         public float max_hp = 100f;
+        public State state;
+        public enum State { idle, moving, working }
 
         [Header("Status")]
         public bool invulnerable = false;
@@ -44,6 +46,7 @@ namespace IndieMarc.TopDown
 
         private static Dictionary<int, Character> character_list = new Dictionary<int, Character>();
 
+
         void Awake()
         {
             character_list[player_id] = this;
@@ -53,9 +56,33 @@ namespace IndieMarc.TopDown
             hp = max_hp;
         }
 
+        public virtual int getEmployeesCount()
+        {
+            return 0;
+        }
+
         void OnDestroy()
         {
             character_list.Remove(player_id);
+        }
+
+        public void StartRepair(Building building)
+        {
+            if (state == State.idle) StartCoroutine(Repairing(building));
+        }
+
+        IEnumerator Repairing(Building building)
+        {
+            state = State.working;
+            animator.SetBool("Working", true);
+            while (building.health < building.healthMax && state == State.working)
+            {
+                building.health++;
+                yield return new WaitForSeconds(0.25f);
+            }
+            animator.SetBool("Working", false);
+            state = State.moving;
+            yield return null;
         }
 
         public void HealDamage(float heal)
