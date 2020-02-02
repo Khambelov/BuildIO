@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8186967340714339168}
   - component: {fileID: 8186967340714339169}
   m_Layer: 0
-  m_Name: Smoke30Frames_0_0
+  m_Name: Smoke30Frames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -196763260554461077, guid: e373a8014ce4d7b4f8f9ed847405ae30,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

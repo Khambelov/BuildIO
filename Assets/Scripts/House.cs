@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class House : MonoBehaviour
 {
@@ -93,12 +94,24 @@ public class House : MonoBehaviour
 		return Coins;
 	}
 
-	private void ChangeSprite()
+	private void ChangeSprite(bool grow = false)
 	{
 		if (HouseState == EHouseState.Destroyed)
+		{
 			render.sprite = BuildContainer.Instance.GetHouseByIndex(houseParamIndex).DestroyedSprite;
+		}
+
 		if (HouseState == EHouseState.Builded)
+		{
 			render.sprite = BuildContainer.Instance.GetHouseByIndex(houseParamIndex).BuildedSprite;
+			if(grow)
+			{
+				Vector3 beginScale = transform.localScale;
+				transform.localScale = Vector3.zero;
+
+				transform.DOScale(beginScale,0.2f);
+			}
+		}
 
 	}
 
@@ -121,7 +134,7 @@ public class House : MonoBehaviour
 
 			HouseState = EHouseState.Builded;
 			BuildContainer.Instance.DropBuildedHouse(this);
-			ChangeSprite();
+			ChangeSprite(true);
 
 			// Destroy(smoke);
 			buildCollider.gameObject.SetActive(false);
