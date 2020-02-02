@@ -10,11 +10,24 @@ namespace IndieMarc.TopDown
 {
     class CharacterPlayer : Character
     {
+        public static CharacterPlayer Instance;
+
         [Header("Employees")]
         public int employeesCount;
         public List<CharacterEmployee> employeesList;
         public GameObject employePrefab;
         public PlayerControls controls;
+
+        private void Start()
+        {
+            Instance = this;
+
+            score = 0;
+            buildCount = 0;
+            teamColor = Color.red;
+
+            CharacterContainer.Instance.AddNewCharacter(this);
+        }
 
         //Handle physics
         void FixedUpdate()

@@ -134,19 +134,21 @@ public class House : MonoBehaviour
 			HouseState = EHouseState.Builded;
 			ChangeSprite(true);
 			smoke.gameObject.SetActive(false);
+
+			currentBuilder.buildCount++;
+			currentBuilder.score += Coins;
+
 			return;
 		}
 
 		if (currentBuilder && HouseState == EHouseState.Destroyed && currentBuilder.getEmployeesCount() >= RequiredWorkers)
 		{
-
 			if (buildProgress < 100 && Vector2.Distance(transform.position, currentBuilder.transform.position) < 3)
 			{
 				AudioManager.Instance.PlayLoopSound("Building");
 
 				smoke.gameObject.SetActive(true);
 				buildProgress += currentBuilder.getEmployeesCount() * Time.deltaTime;
-				Debug.Log(buildProgress);
 			}
 			else
 			{

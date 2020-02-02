@@ -27,6 +27,11 @@ namespace IndieMarc.TopDown
         public float move_deccel = 1f;
         public float move_max = 1f;
 
+        [Header("For Scores")]
+        public Color teamColor;
+        public int score;
+        public int buildCount;
+
         public UnityAction onDeath;
         public UnityAction onHit;
 
