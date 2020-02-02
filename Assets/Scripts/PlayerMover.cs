@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     public static PlayerMover Instance;
+    public IndieMarc.TopDown.Character player;
 
     List<Human> brigada = new List<Human>();
 
@@ -13,6 +14,7 @@ public class PlayerMover : MonoBehaviour
     void Start()
     {
         Instance = this;
+        player = GetComponent<IndieMarc.TopDown.Character>();
     }
 
     // Update is called once per frame

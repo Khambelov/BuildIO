@@ -85,7 +85,6 @@
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CarryItem.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\Character.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterAnim.cs" />
-    <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterContainer.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterEmployee.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterHoldItem.cs" />
     <Compile Include="Assets\IndieMarc\TopDownDemo\Scripts\CharacterPlayer.cs" />
@@ -153,7 +152,6 @@
     <Compile Include="Assets\Scripts\Objects\HouseSpawner.cs" />
     <Compile Include="Assets\Scripts\Objects\Human.cs" />
     <Compile Include="Assets\Scripts\PlayerMover.cs" />
-    <Compile Include="Assets\UIManager.cs" />
     <None Include="Assets\Lean\Common\Examples\Fonts\OFL.txt" />
     <None Include="Assets\Lean\Common\Examples\Shaders\Object.shader" />
     <None Include="Assets\Lean\Common\Examples\Shaders\Skybox.shader" />

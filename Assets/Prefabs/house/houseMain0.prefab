@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1349659102478815571}
   - component: {fileID: 3066510932196979113}
   - component: {fileID: 6346219835910134473}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: house01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4041135901897497128}
   - component: {fileID: 143036164540541736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8402315542272823374}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houseMain0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,8 @@ GameObject:
   - component: {fileID: 3950754643700314935}
   - component: {fileID: 6830562629735299744}
   - component: {fileID: 3963200002022147235}
-  m_Layer: 0
+  - component: {fileID: 6069745380201300477}
+  m_Layer: 9
   m_Name: colliderBuild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,6 +639,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   house: {fileID: 5912795154867067211}
+--- !u!208 &6069745380201300477
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877303662722977699}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.705, y: 0.16, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.25, y: -1.49, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &5592131183320551370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,6 +771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186967340714339182, guid: 29d2e030445ed1544a2f905a22845fa6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d2e030445ed1544a2f905a22845fa6, type: 3}

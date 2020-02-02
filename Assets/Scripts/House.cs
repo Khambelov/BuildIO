@@ -122,6 +122,11 @@ public class House : MonoBehaviour
 
 	}
 
+	public bool isBuilded()
+	{
+		return HouseState == EHouseState.Builded;
+	}
+
 	private void Update()
 	{
 		if (HouseState == EHouseState.Builded)
