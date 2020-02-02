@@ -77,6 +77,8 @@ public class House : MonoBehaviour
 			HouseState = EHouseState.Building;
 			ChangeSprite();
 
+			AudioManager.Instance.PlayLoopSound("Building");
+
 			StartCoroutine(BuildingHouse(buildSpeed));
 		}
 	}
@@ -106,27 +108,30 @@ public class House : MonoBehaviour
 		if (HouseState == EHouseState.Builded)
 		{
 			render.sprite = BuildContainer.Instance.GetHouseByIndex(houseParamIndex).BuildedSprite;
-			if(grow)
+			if (grow)
 			{
 				Vector3 beginScale = transform.localScale;
 				transform.localScale = Vector3.zero;
 
-				transform.DOScale(beginScale,0.2f);
+				transform.DOScale(beginScale, 0.2f);
 			}
 		}
 
 	}
 
-	private void Update() 
+	private void Update()
 	{
-		if(HouseState == EHouseState.Builded)
+		if (HouseState == EHouseState.Builded)
 		{
 			return;
 		}
 
-		if(buildProgress>=100 && HouseState== EHouseState.Destroyed)
+		if (buildProgress >= 100 && HouseState == EHouseState.Destroyed)
 		{
-			HouseState =EHouseState.Builded;
+			AudioManager.Instance.StopLoopSound("Building");
+			AudioManager.Instance.PlaySound("BuildDone");
+
+			HouseState = EHouseState.Builded;
 			ChangeSprite(true);
 			smoke.gameObject.SetActive(false);
 			return;
@@ -134,15 +139,20 @@ public class House : MonoBehaviour
 
 		if (currentBuilder && HouseState == EHouseState.Destroyed && currentBuilder.getEmployeesCount() >= RequiredWorkers)
 		{
-			
-			if(buildProgress<100 && Vector2.Distance(transform.position,currentBuilder.transform.position)<3)
+
+			if (buildProgress < 100 && Vector2.Distance(transform.position, currentBuilder.transform.position) < 3)
 			{
+				AudioManager.Instance.PlayLoopSound("Building");
+
 				smoke.gameObject.SetActive(true);
 				buildProgress += currentBuilder.getEmployeesCount()*Time.deltaTime;
-			}else
+			}
+			else
 			{
+				AudioManager.Instance.StopLoopSound("Building");
+
 				smoke.gameObject.SetActive(false);
-				currentBuilder=null;
+				currentBuilder = null;
 			}
 
 			// owner = team;
@@ -164,10 +174,10 @@ public class House : MonoBehaviour
 			buildProgress += buildSpeed;
 
 			////////////////////
-			Debug.Log("build speed "+buildSpeed  + "/"+buildProgress + " seconds "+seconds);
+			Debug.Log("build speed " + buildSpeed + "/" + buildProgress + " seconds " + seconds);
 			seconds++;
 
-			if(Vector2.Distance(transform.position,currentBuilder.transform.position)>3)
+			if (Vector2.Distance(transform.position, currentBuilder.transform.position) > 3)
 			{
 				smoke.gameObject.SetActive(false);
 				HouseState = EHouseState.Destroyed;

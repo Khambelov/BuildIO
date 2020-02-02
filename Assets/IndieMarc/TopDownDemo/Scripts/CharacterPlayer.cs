@@ -55,6 +55,8 @@ namespace IndieMarc.TopDown
             newEmployee.owner = gameObject;
             employeesList.Add(newEmployee);
             if (employeesCount < employeesList.Count) employeesCount = employeesList.Count;
+
+            AudioManager.Instance.PlaySound("Join");
         }
 
         private void EmployeeRemove()
