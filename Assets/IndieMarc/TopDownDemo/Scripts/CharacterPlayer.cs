@@ -10,7 +10,20 @@ namespace IndieMarc.TopDown
 {
     class CharacterPlayer : Character
     {
+        public static CharacterPlayer Instance;
+
         public PlayerControls controls;
+
+        private void Start()
+        {
+            Instance = this;
+
+            score = 0;
+            buildCount = 0;
+            teamColor = Color.red;
+
+            CharacterContainer.Instance.AddNewCharacter(this);
+        }
 
         //Handle physics
         void FixedUpdate()
