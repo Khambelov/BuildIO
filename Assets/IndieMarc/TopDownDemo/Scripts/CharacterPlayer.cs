@@ -18,8 +18,6 @@ namespace IndieMarc.TopDown
         //Handle physics
         void FixedUpdate()
         {
-            Debug.Log(employeesCount);
-
             //Movement velocity
             float desiredSpeedX = Mathf.Abs(move_input.x) > 0.1f ? move_input.x * move_max : 0f;
             float accelerationX = Mathf.Abs(move_input.x) > 0.1f ? move_accel : move_deccel;
@@ -63,8 +61,20 @@ namespace IndieMarc.TopDown
         {
             if (collision.gameObject.GetComponent<House>() != null && controls.IsStay)
             {
-                collision.gameObject.GetComponent<House>().StartBuilding(10f, employeesCount, gameObject);
+                collision.gameObject.GetComponent<House>().StartBuilding(GetBuildSpeed(collision.gameObject.GetComponent<House>().RequiredWorkers), employeesCount + 1, gameObject);
             }
+        }
+
+        private float GetBuildSpeed(int requiredWorkers)
+        {
+            float workers = (float)requiredWorkers;
+            float employee = (float)employeesCount + 1f;
+            float result = ((workers / 120f) / workers) * employee * 100f;
+
+            if (result > 14.3f)
+                result = 14.3f;
+
+            return result;
         }
 
         //Handle render and controls

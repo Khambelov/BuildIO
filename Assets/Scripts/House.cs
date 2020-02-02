@@ -115,6 +115,7 @@ public class House : MonoBehaviour
 		while (buildProgress < 100f)
 		{
 			buildProgress += buildSpeed;
+			Debug.Log(buildProgress);
 
 			yield return new WaitForSeconds(1f);
 		}
