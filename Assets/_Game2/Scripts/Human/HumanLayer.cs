@@ -30,7 +30,7 @@ public class HumanLayer : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("HouseBack"))
         {
-            sprite.sortingOrder = 200;
+            sprite.sortingOrder = 2000;
             other.GetComponent<BackCollider>().house.setInvis(false);
         }
     }

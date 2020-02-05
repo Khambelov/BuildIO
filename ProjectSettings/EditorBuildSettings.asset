@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/IndieMarc/TopDownDemo/TopDownDemo.unity
     guid: 35fa846952ea23b41a9dca4d21464be1
   - enabled: 1
-    path: Assets/Scenes/main.unity
+    path: Assets/_Game/Scenes/main.unity
     guid: f8d9344896603334eb129fbbb2fe8f57
   m_configObjects: {}
