@@ -10,7 +10,7 @@ public class HumanLayer : MonoBehaviour
         if(other.CompareTag("HouseBack"))
         {
             sprite.sortingOrder = (int)other.transform.parent.position.y*-1-1;
-            other.GetComponent<BackCollider>().house.setInvis(true);
+            other.GetComponent<BackCollider>().house.toggleTransparency(true);
         }
     }
 
@@ -18,7 +18,7 @@ public class HumanLayer : MonoBehaviour
         if(other.CompareTag("HouseBack"))
         {
             sprite.sortingOrder = 2000;
-            other.GetComponent<BackCollider>().house.setInvis(false);
+            other.GetComponent<BackCollider>().house.toggleTransparency(false);
         }
     }
 }

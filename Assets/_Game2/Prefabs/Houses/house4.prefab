@@ -51,6 +51,23 @@ PrefabInstance:
       propertyPath: zShift
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1499237670602160434, guid: c71977fb3a297d946a75de42c7293d0c,
+        type: 3}
+      propertyPath: phase2
+      value: 
+      objectReference: {fileID: -7938445121044960685, guid: 4272ba0551b3777429480afffc435430,
+        type: 3}
+    - target: {fileID: 1499237670602160434, guid: c71977fb3a297d946a75de42c7293d0c,
+        type: 3}
+      propertyPath: phase1
+      value: 
+      objectReference: {fileID: 8791544199267353402, guid: 4272ba0551b3777429480afffc435430,
+        type: 3}
+    - target: {fileID: 1499237670602160434, guid: c71977fb3a297d946a75de42c7293d0c,
+        type: 3}
+      propertyPath: phase2Animator
+      value: 
+      objectReference: {fileID: 477923167}
     - target: {fileID: 1499237670602160436, guid: c71977fb3a297d946a75de42c7293d0c,
         type: 3}
       propertyPath: m_LocalPosition.x

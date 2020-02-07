@@ -2,21 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class HouseV2 : MonoBehaviour
 {
     public static Vector3 baseRot = new Vector3(-30,0,0);
 
-    public SpriteRenderer sprite;
-    public float zShift;
+    [Header("Visual")]
+    public SpriteRenderer spriteRender;
+    public Sprite phase1;
+    public Sprite phase2;
+    public Animator phase2Animator;
+
+    [Header("state")]
+    public EHouseState currentState;
+    public bool resetPosOnStart = false;
 
     private void Start() {
-        resetPos();
+        draw();
+
+        if(resetPosOnStart)
+            resetPos();
     }
 
     public void resetPos()
     {
-        sprite.sortingOrder = (int)transform.position.y*-1;
+        spriteRender.sortingOrder = (int)transform.position.y*-1;
         
         Vector3 pos = transform.position;
         pos.z = 0;
@@ -25,8 +34,26 @@ public class HouseV2 : MonoBehaviour
         transform.rotation = Quaternion.Euler(baseRot);
     }
 
-    public void setInvis(bool invis)
+    public void toggleTransparency(bool invis)
     {
-        sprite.color = invis ? GameColors.transpColor : GameColors.baseColor;
+        spriteRender.color = invis ? GameColors.transpColor : GameColors.baseColor;
+    }
+
+    void draw()
+    {
+        if(currentState == EHouseState.Destroyed)
+        {
+            spriteRender.sprite = phase1;
+            
+            if(phase2Animator)
+                phase2Animator.enabled = false;
+        }
+        else if(currentState==EHouseState.Builded)
+        {
+            spriteRender.sprite = phase2;
+
+            if(phase2Animator)
+                phase2Animator.enabled = true;
+        }
     }
 }

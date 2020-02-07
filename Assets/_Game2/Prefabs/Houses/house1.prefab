@@ -167,5 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91180eaf305be849abdace978acfb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 1499237670602160437}
-  zShift: 0
+  spriteRender: {fileID: 1499237670602160437}
+  phase1: {fileID: -1621681913746983810, guid: 04a8599143ad76e4a8f614c34d06b5e5, type: 3}
+  phase2: {fileID: -5072557114322916609, guid: 04a8599143ad76e4a8f614c34d06b5e5, type: 3}
+  phase2Animator: {fileID: 0}
+  currentState: 0
+  resetPosOnStart: 0

@@ -32,6 +32,18 @@ PrefabInstance:
       propertyPath: zShift
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1499237670602160434, guid: c71977fb3a297d946a75de42c7293d0c,
+        type: 3}
+      propertyPath: phase2
+      value: 
+      objectReference: {fileID: 7396982735975127478, guid: 1acf378c7ec88aa48b10c892b037e209,
+        type: 3}
+    - target: {fileID: 1499237670602160434, guid: c71977fb3a297d946a75de42c7293d0c,
+        type: 3}
+      propertyPath: phase1
+      value: 
+      objectReference: {fileID: -1154913055142988253, guid: 1acf378c7ec88aa48b10c892b037e209,
+        type: 3}
     - target: {fileID: 1499237670602160436, guid: c71977fb3a297d946a75de42c7293d0c,
         type: 3}
       propertyPath: m_LocalPosition.x
