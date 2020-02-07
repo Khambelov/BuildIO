@@ -2,21 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : HumanController
 {
-    public bool humanControlled;
-
-    // Start is called before the first frame update
     void Start()
     {
-        if(humanControlled)
-            Camera.main.transform.SetParent(transform);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Camera.main.transform.SetParent(transform);
     }
 
     private void FixedUpdate() {

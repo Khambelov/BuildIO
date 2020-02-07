@@ -5,19 +5,6 @@ using UnityEngine;
 public class HumanLayer : MonoBehaviour
 {
     public SpriteRenderer sprite;
-    public int shift;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // sprite.sortingOrder = (int)transform.position.y*-1 + shift;
-    }
 
     private void OnTriggerStay2D(Collider2D other) {
         if(other.CompareTag("HouseBack"))
