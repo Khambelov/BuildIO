@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : HumanController
 {
+    public float speed;
+
     void Start()
     {
         Camera.main.transform.SetParent(transform);
@@ -13,6 +15,6 @@ public class PlayerController : HumanController
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
 
-        transform.Translate(new Vector3(hor,ver,0),Space.World);
+        transform.Translate(new Vector3(hor*speed,ver*speed,0),Space.World);
     }
 }

@@ -14,7 +14,9 @@ public class HouseV2 : MonoBehaviour
 
     [Header("state")]
     public EHouseState currentState;
-    public bool resetPosOnStart = false;
+    
+    [SerializeField]
+    private bool resetPosOnStart = false;
 
     private void Start() {
         draw();
@@ -39,7 +41,7 @@ public class HouseV2 : MonoBehaviour
         spriteRender.color = invis ? GameColors.transpColor : GameColors.baseColor;
     }
 
-    void draw()
+    public void draw()
     {
         if(currentState == EHouseState.Destroyed)
         {
