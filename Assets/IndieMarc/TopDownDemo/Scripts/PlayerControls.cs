@@ -56,14 +56,8 @@ namespace IndieMarc.TopDown
 				if (startPoint == Vector3.zero)
 					startPoint = Input.GetTouch(0).position;
 
-				if (Input.GetTouch(0).position.x - startPoint.x > 0)
-					move += Vector2.right;
-				if (Input.GetTouch(0).position.x - startPoint.x < 0)
-					move += -Vector2.right;
-				if (Input.GetTouch(0).position.y - startPoint.y > 10f)
-					move += Vector2.up;
-				if (Input.GetTouch(0).position.y - startPoint.y < -10f)
-					move += -Vector2.up;
+				move.x = Input.GetTouch(0).position.x - startPoint.x;
+				move.y = Input.GetTouch(0).position.y - startPoint.y;
 			}
 			else
 			{
@@ -78,14 +72,8 @@ namespace IndieMarc.TopDown
 				{
 					startPoint = Input.mousePosition;
 				}
-				if (Input.mousePosition.x - startPoint.x > 0)
-					move += Vector2.right;
-				if (Input.mousePosition.x - startPoint.x < 0)
-					move += -Vector2.right;
-				if (Input.mousePosition.y - startPoint.y > 10f)
-					move += Vector2.up;
-				if (Input.mousePosition.y - startPoint.y < -10f)
-					move += -Vector2.up;
+				move.x = Input.mousePosition.x - startPoint.x;
+				move.y = Input.mousePosition.y - startPoint.y;
 			}
 			else
 			{
@@ -93,18 +81,8 @@ namespace IndieMarc.TopDown
 			}
 #endif
 
-			/*if (Input.GetKey(left_key))
-				move += -Vector2.right;
-			if (Input.GetKey(right_key))
-				move += Vector2.right;
-			if (Input.GetKey(up_key))
-				move += Vector2.up;
-			if (Input.GetKey(down_key))
-				move += -Vector2.up;
-			if (Input.GetKey(action_key))
-				action_hold = true;
-			if (Input.GetKeyDown(action_key))
-				action_press = true;*/
+			float maxDiff = Mathf.Abs(move.x)>Mathf.Abs(move.y) ? Mathf.Abs(move.x):Mathf.Abs(move.y);
+			move/=maxDiff;
 
 			float move_length = Mathf.Min(move.magnitude, 1f);
 			move = move.normalized * move_length;
