@@ -27,7 +27,8 @@ public class PoolingManager2 : MonoBehaviour
             int rnd = Random.Range(0,prefabs.Length);
             GameObject house = Instantiate(prefabs[rnd],tf.transform.position,Quaternion.identity);
             Vector3 pos =  house.transform.position;
-            pos.z = shift;
+            pos.z = 0;
+
             house.transform.position = pos;
             house.transform.rotation = Quaternion.Euler(new Vector3(angle,0,0));
             house.transform.SetParent(parent);
