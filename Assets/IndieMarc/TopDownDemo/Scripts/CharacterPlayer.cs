@@ -37,12 +37,16 @@ namespace IndieMarc.TopDown
             move.y = Mathf.MoveTowards(move.y, desiredSpeedY, accelerationY * Time.fixedDeltaTime);
 
             //Move
-            rigid.velocity = move;
-            state = move != Vector2.zero ? State.moving : state != State.working ? State.idle : State.working;
+            if (Input.GetMouseButton(0))
+            {
+                rigid.velocity = move;
+            }
+            else
+            {
+                rigid.velocity = Vector2.zero;
+            }
 
-            // if (employeesCount != employeesList.Count)
-            //     if (employeesCount > employeesList.Count) EmployeeAdd(Vector3.zero);
-            //     else EmployeeRemove();
+            state = move != Vector2.zero ? State.moving : state != State.working ? State.idle : State.working;
         }
 
 
