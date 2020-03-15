@@ -55,6 +55,7 @@ namespace IndieMarc.TopDown
         [Header("Employees")]
         protected List<IndieMarc.TopDown.CharacterEmployee> employeesList = new List<CharacterEmployee>();
 
+        public SpriteRenderer spr;
         public Color playerColor;
 
         void Awake()
@@ -64,7 +65,15 @@ namespace IndieMarc.TopDown
             animator = GetComponent<Animator>();
             auto_order = GetComponent<AutoOrderLayer>();
             hp = max_hp;
-            GetComponent<SpriteRenderer>().color = playerColor;
+
+            if (spr == null)
+            {
+                GetComponent<SpriteRenderer>().color = playerColor;
+            }
+            else
+            {
+                spr.color = playerColor;
+            }
         }
 
         public virtual int getEmployeesCount()

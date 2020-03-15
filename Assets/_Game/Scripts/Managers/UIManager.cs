@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 {
 	public static UIManager Instance;
 
+    public GameObject GUI;
+
 	[Header("Start Window")]
 	[SerializeField] private GameObject startWindow;
 	[SerializeField] private Button startGame;
@@ -42,6 +44,7 @@ public class UIManager : MonoBehaviour
 
 	private void Start()
 	{
+        GUI.SetActive(true);
 		isStartGame = false;
 
 		startGame.onClick.AddListener(() => StartGame());
