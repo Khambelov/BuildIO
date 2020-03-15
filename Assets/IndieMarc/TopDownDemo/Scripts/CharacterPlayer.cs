@@ -44,6 +44,7 @@ namespace IndieMarc.TopDown
             else
             {
                 rigid.velocity = Vector2.zero;
+                move = Vector2.zero;
             }
 
             state = move != Vector2.zero ? State.moving : state != State.working ? State.idle : State.working;
@@ -58,8 +59,6 @@ namespace IndieMarc.TopDown
             {
                 currentHouse = hbcollider.house;
                 currentHouse.currentBuilder = this;
-                // currentHouse.StartBuilding(GetBuildSpeed(hbcollider.house.RequiredWorkers), employeesCount + 1, gameObject);
-                // StartCoroutine(buildToBuild());
             }
         }    
 
@@ -72,10 +71,8 @@ namespace IndieMarc.TopDown
             //Controls
             if (!disable_controls)
             {
-                //Controls
                 PlayerControls controls = PlayerControls.Get(player_id);
                 move_input = controls.GetMove();
-
             }
 
             //Update lookat side
