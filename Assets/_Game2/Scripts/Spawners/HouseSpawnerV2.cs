@@ -9,6 +9,7 @@ public class HouseSpawnerV2 : MonoBehaviour
 
     [Header("params")]
     public float buildedPercentOnStart = 10;
+    public Vector3 scale = Vector3.one;
 
 
     List<HouseV2> spawned = new List<HouseV2>();
@@ -51,7 +52,7 @@ public class HouseSpawnerV2 : MonoBehaviour
             house.resetPos();
             house.currentState = destroyedNums.Contains(i) ? EHouseState.Destroyed : EHouseState.Builded;
             house.draw();
-            house.transform.localScale = Vector3.one;
+            house.transform.localScale = scale;
 
             mainField.GetChild(i).gameObject.SetActive(false);
             spawned.Add(house);
